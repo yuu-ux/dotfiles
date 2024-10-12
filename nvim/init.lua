@@ -39,9 +39,21 @@ vim.cmd([[
         Plug 'nvim-lualine/lualine.nvim'
         Plug 'nvim-tree/nvim-web-devicons'
         Plug 'joshdick/onedark.vim'
+        Plug 'neovim/nvim-lspconfig'
+        Plug 'williamboman/mason.nvim'
+        Plug 'williamboman/mason-lspconfig.nvim'
+        Plug 'hrsh7th/cmp-nvim-lsp'
+        Plug 'hrsh7th/cmp-buffer'
+        Plug 'hrsh7th/cmp-path'
+        Plug 'hrsh7th/cmp-cmdline'
+        Plug 'hrsh7th/nvim-cmp'
+        Plug 'hrsh7th/vim-vsnip'
         Plug 'pbondoer/vim-42header'
+        Plug 'shellRaining/hlchunk.nvim'
+        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     call plug#end()
 ]])
+
 
 -- Enable syntax highlighting
 vim.cmd("syntax on")
@@ -199,3 +211,96 @@ require('lualine').setup {
     lualine_z = { 'location' }
   }
 }
+
+-- mason設定
+require("mason").setup()
+require("mason-lspconfig").setup {
+    ensure_installed = { "lua_ls", "pyright" },
+}
+
+require('lspconfig').pyright.setup {
+  on_attach = function(client, bufnr)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap=true })
+  end,
+}
+
+-- 2. build-in LSP function
+-- keyboard shortcut
+vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
+vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+vim.keymap.set('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
+vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+-- LSP handlers
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+)
+-- Reference highlight
+vim.cmd [[
+set updatetime=500
+highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+augroup lsp_document_highlight
+  autocmd!
+  autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
+  autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
+augroup END
+]]
+
+-- nvim-cmp設定
+local cmp = require("cmp")
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" }, -- LSP補完ソースとしてnvim_lspを使用
+    -- { name = "buffer" },
+    -- { name = "path" },
+  }),
+  mapping = cmp.mapping.preset.insert({
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
+    ['<C-l>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm { select = true },
+  }),
+  experimental = {
+    ghost_text = true,
+  },
+})
+
+-- LSPサーバーの設定 (clangdをnvim-lspconfigでセットアップ)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+require('lspconfig').clangd.setup {
+  capabilities = capabilities,
+}
+
+-- hlchunk設定
+require('hlchunk').setup({
+    chunk = {
+        enable = true,
+        style = "#806d9c",
+        chars = {
+            horizontal_line = "─",
+            vertical_line = "│",
+            left_top = "╭",
+            left_bottom = "╰",
+            right_arrow = ">",
+        },
+    },
+    indent = {
+        enable = true
+    }
+})
