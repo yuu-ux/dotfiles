@@ -48,7 +48,6 @@ vim.cmd([[
         Plug 'hrsh7th/cmp-cmdline'
         Plug 'hrsh7th/nvim-cmp'
         Plug 'hrsh7th/vim-vsnip'
-        Plug 'pbondoer/vim-42header'
         Plug 'shellRaining/hlchunk.nvim'
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     call plug#end()
