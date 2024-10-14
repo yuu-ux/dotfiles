@@ -47,9 +47,11 @@ vim.cmd([[
         Plug 'hrsh7th/cmp-path'
         Plug 'hrsh7th/cmp-cmdline'
         Plug 'hrsh7th/nvim-cmp'
-        Plug 'hrsh7th/vim-vsnip'
+        Plug 'dcampos/nvim-snippy'
         Plug 'shellRaining/hlchunk.nvim'
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+        Plug 'stevearc/aerial.nvim'
+        Plug 'nvim-telescope/telescope-file-browser.nvim'
     call plug#end()
 ]])
 
@@ -89,7 +91,7 @@ vim.opt.termguicolors  = true                                  -- 24ビットRGB
 vim.opt.laststatus     = 2                                     -- 常にステータスラインを表示する
 vim.opt.cmdheight      = 2                                     -- コマンドラインの行数を指定する
 vim.opt.list           = true                                  -- ホワイトスペースなどを表示する
-vim.opt.listchars      = "tab:>.,trail:_,extends:>,precedes:<" -- 不可視文字の表示形式を指定する
+vim.opt.listchars      = { tab = ">.", trail = "_", extends = ">", precedes = "<" } -- 不可視文字の表示形式を指定する
 vim.opt.cursorline     = true                                  -- カーソル行をハイライトする
 vim.opt.conceallevel   = 0                                     -- conceal 属性のテキストをどう表示するか指定する（「0」の場合、通常通り表示する）
 vim.opt.signcolumn     = "yes"                                 -- 各種記号用カラムを常に表示（vim-gitgutterで未修正ファイルを変更した際のずれをなくすため）
@@ -97,8 +99,8 @@ vim.opt.winblend       = 10                                    -- フローテ�
 vim.opt.pumblend       = 10                                    -- ポップアップメニューの透明度を指定する（「0」の場合、非透明になる）
 vim.opt.scrolloff      = 8                                     -- スクロール時にカーソル行上下に表示する行数を指定する
 vim.opt.sidescrolloff  = 8                                     -- 横スクロール時にカーソルの左右に表示する桁数を指定する
-vim.opt.backspace      = "indent,eol,start"                    -- バックスペースでインデントなどを消せるようにする
-vim.opt.whichwrap      = "b,s,h,l,<,>,[,]"                     -- 行頭や行末で左右に移動した際に行をまたいで移動ができるようにする
+vim.opt.backspace      = { 'indent', 'eol', 'start' } -- バックスペースでインデントなどを消せるようにする
+vim.opt.whichwrap      = { b = true, s = true, h = true, l = true, ["<"] = true, [">"] = true, ["["] = true, ["]"] = true } -- 行頭や行末で左右に移動した際に行をまたいで移動ができるようにする
 
 vim.opt.ignorecase = true -- 検索時に大文字小文字を区別しない
 vim.opt.smartcase  = true -- 検索時に大文字が含まれる場合のみ大文字小文字を区別する
@@ -151,8 +153,6 @@ vim.keymap.set("x", "<", "<gv", { noremap = true, silent = true, desc = "Indent 
 -- talescope設定
 local telescope = require('telescope')
 local actions = require('telescope.actions')
--- Load Telescope FZF extension
-telescope.load_extension('fzf')
 
 telescope.setup{
   defaults = {
@@ -169,21 +169,46 @@ telescope.setup{
       theme = "dropdown",
     },
   },
-  extensions = {
-    fzf = {
-      fuzzy = true,                    -- false にすると完全一致での検索
-      override_generic_sorter = true,  -- デフォルトのジェネリックソーターを上書き
-      override_file_sorter = true,     -- デフォルトのファイルソーターを上書き
-      case_mode = "smart_case",        -- または "ignore_case" または "respect_case"
+    extensions = {
+        file_browser = {
+          theme = "ivy",
+          hijack_netrw = true,
+        },
+        fzf = {
+          fuzzy = true,                    -- false にすると完全一致での検索
+          override_generic_sorter = true,  -- デフォルトのジェネリックソーターを上書き
+          override_file_sorter = true,     -- デフォルトのファイルソーターを上書き
+          case_mode = "smart_case",        -- または "ignore_case" または "respect_case"
+        },
+        aerial = {
+            format_symbol = function(symbol_path, filetype)
+                if filetype == "json" or filetype == "yaml" then
+                  return table.concat(symbol_path, ".")
+                else
+                  return symbol_path[#symbol_path]
+                end
+              end,
+      -- Available modes: symbols, lines, both
+          show_columns = "both",
+        },
     },
-  },
 }
 
+telescope.load_extension("file_browser")
+telescope.load_extension("fzf")
+telescope.load_extension("aerial")
+
 -- Telescope key mappings
-vim.api.nvim_set_keymap('n', '<leader>b', ':Telescope buffers<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>f', ':Telescope find_files<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>g', ':Telescope live_grep<CR>', { noremap = true, silent = true })
--- ビジュアルモードで "p" に "_dP" をマッピング
+--vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope buffers<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<CR>', { silent = true })
+vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>', { silent = true })
+vim.keymap.set('n', '<leader>fa',
+function()
+    require("telescope").extensions.aerial.aerial()
+end, { silent = true })
+
+            -- ビジュアルモードで "p" に "_dP" をマッピング
 vim.api.nvim_set_keymap('x', 'p', '"_dP', { noremap = true, silent = true })
 
 -- lualine設定
@@ -259,7 +284,7 @@ local cmp = require("cmp")
 cmp.setup({
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+        require('snippy').expand_snippet(args.body)
     end,
   },
   sources = cmp.config.sources({
@@ -286,6 +311,15 @@ require('lspconfig').clangd.setup {
   capabilities = capabilities,
 }
 
+require('snippy').setup({
+    mappings = {
+        is = {
+            ["<Tab>"] = "expand_or_advance",
+            ["<S-Tab>"] = "previous",
+        },
+    },
+})
+
 -- hlchunk設定
 require('hlchunk').setup({
     chunk = {
@@ -303,3 +337,20 @@ require('hlchunk').setup({
         enable = true
     }
 })
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+}
+
+-- aerial設定
+require("aerial").setup({
+  -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+  on_attach = function(bufnr)
+    -- Jump forwards/backwards with '{' and '}'
+    vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+    vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+  end,
+})
+-- You probably also want to set a keymap to toggle aerial
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")-- aerial設定
