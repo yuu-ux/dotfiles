@@ -13,9 +13,13 @@ do
 done
 
 # コミットテンプレート追加
+# Todo ファイル内ですでに指定されていたら追記しないように条件分岐したい
 echo "
 [commit]
   template = ~/dotfiles/.gitmessages" >> ${HOME}/.gitconfig
+
+# デフォルトのエディタを変更
+git config --global core.editor nvim
 
 # nvim プラグインインストール
 mkdir ${CURRENT_DIR}/nvim/plugged
