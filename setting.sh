@@ -13,7 +13,7 @@ do
 done
 
 # コミットテンプレート追加
-# Todo ファイル内ですでに指定されていたら追記しないように条件分岐したい
+# TODO ファイル内ですでに指定されていたら追記しないように条件分岐したい
 echo "
 [commit]
   template = ~/dotfiles/.gitmessages" >> ${HOME}/.gitconfig

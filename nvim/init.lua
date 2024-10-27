@@ -1,33 +1,34 @@
 -- 自動で読み込まれるものをオフにする・文字コード指定
 vim.cmd("autocmd!")
 vim.scriptencoding = "utf-8"
+local g = vim.g
 
 -- 無効にするビルトインプラグイン
-vim.g["loaded_2html_plugin"] = 1
-vim.g["loaded_compiler"] = 1
-vim.g["loaded_bugreport"] = 1
-vim.g["loaded_ftplugin"] = 1
-vim.g["loaded_getscript"] = 1
-vim.g["loaded_getscriptPlugin"] = 1
-vim.g["loaded_gzip"] = 1
-vim.g["loaded_logipat"] = 1
-vim.g["loaded_matchit"] = 1
-vim.g["loaded_netrw"] = 1
-vim.g["loaded_netrwPlugin"] = 1
-vim.g["loaded_netrwSettings"] = 1
-vim.g["loaded_netrwFileHandlers"] = 1
-vim.g["loaded_optwin"] = 1
-vim.g["loaded_rplugin"] = 1
-vim.g["loaded_rrhelper"] = 1
-vim.g["loaded_spellfile_plugin"] = 1
-vim.g["loaded_synmenu"] = 1
-vim.g["loaded_tar"] = 1
-vim.g["loaded_tarPlugin"] = 1
-vim.g["loaded_tutor"] = 1
-vim.g["loaded_vimball"] = 1
-vim.g["loaded_vimballPlugin"] = 1
-vim.g["loaded_zip"] = 1
-vim.g["loaded_zipPlugin"] = 1
+g["loaded_2html_plugin"] = 1
+g["loaded_compiler"] = 1
+g["loaded_bugreport"] = 1
+g["loaded_ftplugin"] = 1
+g["loaded_getscript"] = 1
+g["loaded_getscriptPlugin"] = 1
+g["loaded_gzip"] = 1
+g["loaded_logipat"] = 1
+g["loaded_matchit"] = 1
+g["loaded_netrw"] = 1
+g["loaded_netrwPlugin"] = 1
+g["loaded_netrwSettings"] = 1
+g["loaded_netrwFileHandlers"] = 1
+g["loaded_optwin"] = 1
+g["loaded_rplugin"] = 1
+g["loaded_rrhelper"] = 1
+g["loaded_spellfile_plugin"] = 1
+g["loaded_synmenu"] = 1
+g["loaded_tar"] = 1
+g["loaded_tarPlugin"] = 1
+g["loaded_tutor"] = 1
+g["loaded_vimball"] = 1
+g["loaded_vimballPlugin"] = 1
+g["loaded_zip"] = 1
+g["loaded_zipPlugin"] = 1
 
 -- Plugin management using vim-plug
 vim.cmd(
@@ -69,13 +70,13 @@ vim.opt.swapfile = false -- スワップファイルを作らない
 vim.opt.backup = false -- バックアップファイルを作らない
 vim.opt.writebackup = false -- ファイル上書き前にバックアップを作成しない
 vim.opt.undofile = false -- アンドゥファイルを作成しない
-vim.opt.completeopt = "menuone,noinsert,noselect" -- 補完メニューを設定する
+vim.opt.completeopt = {"menuone", "noinsert", "noselect"} -- 補完メニューを設定する
 
 vim.opt.encoding = "utf-8" -- neovim 内の文字エンコーディングを指定する
 vim.opt.fileencoding = "utf-8" -- デフォルトの文字コードを指定する
-vim.opt.fileencodings = "utf-8,euc-jp,sjis,iso-2022-jp" -- 文字コードの自動認識順序を指定する
+vim.opt.fileencodings = {"utf-8", "euc-jp", "sjis", "iso-2022-jp"} -- 文字コードの自動認識順序を指定する
 vim.opt.fileformat = "unix" -- デフォルトの改行コードを指定する
-vim.opt.fileformats = "unix,dos,mac" -- 改行コードの自動認識順序を指定する
+vim.opt.fileformats = {"unix", "dos", "mac"} -- 改行コードの自動認識順序を指定する
 
 vim.opt.showmode = false -- モードを非表示にする
 vim.opt.showtabline = 0 -- タブラインの表示を指定する（「0」だと表示されない）
@@ -110,7 +111,6 @@ vim.opt.expandtab = true -- タブ入力を空白に変換する
 vim.opt.shiftwidth = 4 -- 自動インデント時に入力する空白の数する
 vim.opt.tabstop = 4 -- タブが返還される空白数を指定する
 vim.opt.smartindent = true -- 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
-
 vim.opt.hidden = true -- 未保存のファイルがある場合でも別ファイルを開くことができるようにする
 vim.opt.history = 100 -- コマンド履歴の保存数を指定する
 vim.opt.lazyredraw = false -- コマンド実行中は再描画しない
@@ -127,8 +127,8 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.ddl,*.sql setfiletype sql")
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.tt,*.inc setfiletype tt2html")
 
 -- リーダーキー
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+g.mapleader = " "
+g.maplocalleader = "\\"
 
 -- リセット
 vim.keymap.set("v", "nn", "<esc>")
@@ -140,7 +140,7 @@ vim.keymap.set("", "#", "<Nop>", {noremap = true, silent = true, desc = "Disable
 vim.keymap.set("", "<Leader>n", "<Nop>", {noremap = true, silent = true, desc = "Disable <Leader>n key"})
 vim.keymap.set("", "<Space>", "<Nop>", {noremap = true, silent = true, desc = "Disable <Space> key"})
 vim.keymap.set("n", "Q", "", {noremap = true, silent = true, desc = "Disable Q key"})
-vim.keymap.set("n", "<Esc><Esc>", ":nohl<CR>", {noremap = true, silent = true, desc = "Clear search highlighting"})
+vim.keymap.set("n", "nh", ":nohl<CR>", {noremap = true, silent = true, desc = "Clear search highlighting"})
 vim.keymap.set("n", "d", '"_d', {noremap = true, silent = true})
 vim.keymap.set("x", "d", '"_d', {noremap = true, silent = true})
 
@@ -209,7 +209,7 @@ telescope.load_extension("fzf")
 telescope.load_extension("aerial")
 
 -- Telescope key mappings
-vim.keymap.set("n", "<leader>fc", ":Telescope buffers<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", {silent = true})
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", {silent = true})
 vim.keymap.set("n", "<leader>fb", ":Telescope file_browser<CR>", {silent = true})

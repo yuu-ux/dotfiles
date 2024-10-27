@@ -8,6 +8,7 @@ alias nor='/Users/ebarayuuga/Library/Python/3.11/bin/norminette'
 alias cdso='cd /Users/ebarayuuga/Documents/so_long'
 # Created by `pipx` on 2024-08-09 13:57:16
 export PATH="$PATH:/Users/ebarayuuga/.local/bin"
+export PATH="/opt/X11/bin/:$PATH"
 alias j=z
 . ~/z/z.sh
 . /usr/local/opt/asdf/libexec/asdf.sh
