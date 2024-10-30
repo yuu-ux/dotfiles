@@ -217,7 +217,7 @@ telescope.load_extension("fzf")
 telescope.load_extension("aerial")
 
 -- Telescope key mappings
-vim.keymap.set("n", "<leader>fc", ":Telescope buffers<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", {silent = true})
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", {silent = true})
 vim.keymap.set("n", "<leader>fb", ":Telescope file_browser<CR>", {silent = true})
