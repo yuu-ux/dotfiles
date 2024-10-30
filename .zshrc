@@ -8,7 +8,7 @@ alias nor='/Users/ebarayuuga/Library/Python/3.11/bin/norminette'
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-
+xset r rate 190 62
 # Created by `pipx` on 2024-08-09 13:57:16
 source ~/.zsh/git-prompt.sh
 

@@ -265,7 +265,7 @@ require("lualine").setup {
 -- mason設定
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = {"lua_ls", "pyright"}
+    ensure_installed = {"lua_ls", "pyright", "clangd"}
 }
 
 require("lspconfig").pyright.setup {
@@ -391,3 +391,6 @@ require("aerial").setup(
 )
 
 vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+
+-- ft_count_line
+require('function_lines_counter').setup()
