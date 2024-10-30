@@ -2,15 +2,14 @@ alias add='git add'
 alias commit='git commit'
 alias push='git push'
 alias v='nvim'
-alias examshell='bash -c "$(curl https://grademe.fr)"'
-alias cdalgo='/Users/ebarayuuga/Documents/algosiki'
 alias nor='/Users/ebarayuuga/Library/Python/3.11/bin/norminette'
-alias cdso='cd /Users/ebarayuuga/Documents/so_long'
+. "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
 # Created by `pipx` on 2024-08-09 13:57:16
-export PATH="$PATH:/Users/ebarayuuga/.local/bin"
-alias j=z
-. ~/z/z.sh
-. /usr/local/opt/asdf/libexec/asdf.sh
 source ~/.zsh/git-prompt.sh
 
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -164,9 +163,5 @@ tm() {
 [[ -e /usr/share/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 [[ -e /lib/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 
-
-PATH="/Users/ebarayuuga/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/ebarayuuga/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/ebarayuuga/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/ebarayuuga/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/ebarayuuga/perl5"; export PERL_MM_OPT;
+# Load Homebrew config script
+source $HOME/.brewconfig.zsh

@@ -29,32 +29,40 @@ vim.g["loaded_vimballPlugin"] = 1
 vim.g["loaded_zip"] = 1
 vim.g["loaded_zipPlugin"] = 1
 
--- Plugin management using vim-plug
-vim.cmd(
-    [[
-    call plug#begin('~/.config/nvim/plugged')
-        Plug 'nvim-lua/plenary.nvim'
-        Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
-        Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-        Plug 'nvim-lualine/lualine.nvim'
-        Plug 'nvim-tree/nvim-web-devicons'
-        Plug 'joshdick/onedark.vim'
-        Plug 'neovim/nvim-lspconfig'
-        Plug 'williamboman/mason.nvim'
-        Plug 'williamboman/mason-lspconfig.nvim'
-        Plug 'hrsh7th/cmp-nvim-lsp'
-        Plug 'hrsh7th/cmp-buffer'
-        Plug 'hrsh7th/cmp-path'
-        Plug 'hrsh7th/cmp-cmdline'
-        Plug 'hrsh7th/nvim-cmp'
-        Plug 'dcampos/nvim-snippy'
-        Plug 'shellRaining/hlchunk.nvim'
-        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-        Plug 'stevearc/aerial.nvim'
-        Plug 'nvim-telescope/telescope-file-browser.nvim'
-    call plug#end()
-]]
-)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require('lazy').setup({
+    { 'nvim-lua/plenary.nvim' },
+    { 'nvim-telescope/telescope.nvim', tag = '0.1.8' },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    { 'nvim-lualine/lualine.nvim' },
+    { 'nvim-tree/nvim-web-devicons' },
+    { 'joshdick/onedark.vim' },
+    { 'neovim/nvim-lspconfig' },
+    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason-lspconfig.nvim' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-cmdline' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'dcampos/nvim-snippy' },
+    { 'shellRaining/hlchunk.nvim' },
+    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+    { 'stevearc/aerial.nvim' },
+    { 'nvim-telescope/telescope-file-browser.nvim' }
+})
 
 -- Enable syntax highlighting
 vim.cmd("syntax on")
@@ -106,7 +114,7 @@ vim.opt.ignorecase = true -- 検索時に大文字小文字を区別しない
 vim.opt.smartcase = true -- 検索時に大文字が含まれる場合のみ大文字小文字を区別する
 vim.opt.hlsearch = true -- 前回の検索パターンが存在する場合にマッチするテキストを強調表示する
 
-vim.opt.expandtab = true -- タブ入力を空白に変換する
+vim.opt.expandtab = false -- タブ入力を空白に変換する
 vim.opt.shiftwidth = 4 -- 自動インデント時に入力する空白の数する
 vim.opt.tabstop = 4 -- タブが返還される空白数を指定する
 vim.opt.smartindent = true -- 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
