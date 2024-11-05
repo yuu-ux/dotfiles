@@ -24,3 +24,4 @@ git config --global core.editor nvim
 # nvim プラグインインストール
 mkdir ${CURRENT_DIR}/nvim/plugged
 nvim +":PlugInstall" ${HOME}/dotfiles/nvim/init.lua
+
