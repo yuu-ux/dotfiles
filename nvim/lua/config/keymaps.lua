@@ -1,8 +1,17 @@
 local keymap = vim.keymap
 
 -- リセット
+keymap.set('n', 'j', 'gj')
+keymap.set('n', 'k', 'gk')
+keymap.set('v', 'j', 'gj')
+keymap.set('v', 'k', 'gk')
 keymap.set("v", "nn", "<esc>")
 keymap.set("i", "jj", "<esc>")
+keymap.set('n', 'J', ':m .+1<CR>==', { noremap = true, silent = true })
+keymap.set('n', 'K', ':m .-2<CR>==', { noremap = true, silent = true })
+-- ビジュアルモード
+keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 keymap.set("", ";", "<Nop>", {noremap = true, silent = true, desc = "Disable ; key"})
 keymap.set("", "m", "<Nop>", {noremap = true, silent = true, desc = "Disable m key"})
 keymap.set("", ",", "<Nop>", {noremap = true, silent = true, desc = "Disable , key"})
@@ -30,11 +39,6 @@ keymap.set(
     {noremap = true, silent = true, desc = "Indent selected lines to the left and reselect"}
 )
 
--- Telescope key mappings
-keymap.set("n", "<leader>b", ":Telescope buffers<CR>", {noremap = true, silent = true})
-keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", {silent = true})
-keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", {silent = true})
-keymap.set("n", "<leader>fb", ":Telescope file_browser<CR>", {silent = true})
 keymap.set(
     "n",
     "<leader>fa",
@@ -48,7 +52,7 @@ keymap.set(
 keymap.set("x", "p", '"_dP', {noremap = true, silent = true})
 
 -- lsp key mappings
-keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+keymap.set("n", "H", "<cmd>lua vim.lsp.buf.hover()<CR>")
 keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")

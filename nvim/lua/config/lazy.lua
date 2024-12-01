@@ -11,10 +11,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-    { 'neoclide/coc.nvim', branch = 'release' },
+require('lazy').setup({
+    -- spec = 'plugins',
+    -- { 'neoclide/coc.nvim', branch = 'release' },
+    require('plugins/telescope'),
+    require('plugins/nvim-web-devicons'),
+    { 'lewis6991/gitsigns.nvim' },
+    { 'tpope/vim-fugitive' },
     { 'nvim-lua/plenary.nvim' },
-    { 'nvim-telescope/telescope.nvim', tag = '0.1.8' },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     { 'nvim-telescope/telescope-file-browser.nvim' },
     { 'nvim-lualine/lualine.nvim' },
