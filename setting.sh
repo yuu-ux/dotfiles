@@ -4,7 +4,7 @@ curl -o "${HOME}/.zsh/git-prompt.sh" https://raw.githubusercontent.com/git/git/m
 
 # シンボリックリンク
 mkdir -p "${HOME}/.config"
-CURRENT_DIR=$(cd $(dirname $0); pwd)
+CURRENT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 ln -snf ${CURRENT_DIR}/.zshrc ${HOME}/.zshrc
 for dir in *
 do
