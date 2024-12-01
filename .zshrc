@@ -7,6 +7,8 @@ alias cdalgo='/Users/ebarayuuga/Documents/algosiki'
 alias nor='/Users/ebarayuuga/Library/Python/3.11/bin/norminette'
 alias cdso='cd /Users/ebarayuuga/Documents/so_long'
 alias chrome='open /Applications/Google\ Chrome.app/'
+alias docker-rm-all="docker rm `(docker ps -aq)`"
+alias docker-rmi-all="docker rmi `(docker images -aq)`"
 # Created by `pipx` on 2024-08-09 13:57:16
 export PATH="$PATH:/Users/ebarayuuga/.local/bin"
 export PATH="/opt/X11/bin/:$PATH"

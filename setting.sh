@@ -1,4 +1,9 @@
+# git prompt インストール
+mkdir "{$HOME}/.zsh"
+curl -o "{$HOME}/.zsh/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
+
 # シンボリックリンク
+mkdir "{$HOME}/.config"
 CURRENT_DIR=$(cd $(dirname $0); pwd)
 ln -snf ${CURRENT_DIR}/.zshrc ${HOME}/.zshrc
 for dir in *
