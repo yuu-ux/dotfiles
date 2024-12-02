@@ -8,6 +8,9 @@ CURRENT_DIR=$(cd "$(dirname "$0")" && pwd)
 ln -snf ${CURRENT_DIR}/.zshrc ${HOME}/.zshrc
 for dir in *
 do
+    if [ ${dir} = 'tmux' ]; then
+        ln -snf "${CURRENT_DIR}/${dir}/tmux.conf" "${HOME}/.tmux.conf"
+    fi
     if [ -d ${dir} ]; then
         ln -snf ${CURRENT_DIR}/${dir} ${HOME}/.config/${dir}
     fi
