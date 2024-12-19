@@ -31,7 +31,6 @@ return {
         desc = 'Telescope help tags',
         },
     },
-    lazy = true,
     opts = {
         pickers = {
             find_files = {
