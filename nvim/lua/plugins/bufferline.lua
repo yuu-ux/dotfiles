@@ -21,7 +21,9 @@ return {
             silent = true,
         },
     },
-    opts = {
-        termguicolors = true,
-    },
+    opts = {},
+    init = function()
+        vim.o.termguicolors = true
+    end,
+    lazy = false,
 }
