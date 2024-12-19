@@ -86,6 +86,10 @@ require('lspconfig').clangd.setup {
     capabilities = capabilities
 }
 
+require('lspconfig').ts_ls.setup {
+    capabilities = capabilities
+}
+
 require('snippy').setup(
     {
         mappings = {
@@ -97,41 +101,8 @@ require('snippy').setup(
     }
 )
 
--- hlchunk設定
-require('hlchunk').setup(
-    {
-        chunk = {
-            enable = true,
-            style = '#806d9c',
-            chars = {
-                horizontal_line = '─',
-                vertical_line = '│',
-                left_top = '╭',
-                left_bottom = '╰',
-                right_arrow = '>'
-            }
-        },
-        indent = {
-            enable = true
-        }
-    }
-)
-
 require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or 'all' (the listed parsers MUST always be installed)
     ensure_installed = {'c', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline'}
 }
 
--- aerial設定
-require('aerial').setup(
-    {
-        -- optionally use on_attach to set keymaps when aerial has attached to a buffer
-        on_attach = function(bufnr)
-            -- Jump forwards/backwards with '{' and '}'
-            vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr})
-            vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr})
-        end
-    }
-)
-
-vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
