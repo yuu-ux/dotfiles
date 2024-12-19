@@ -1,7 +1,7 @@
 # git prompt インストール
 mkdir -p "${HOME}/.zsh"
 curl -o "${HOME}/.zsh/git-prompt.sh" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-
+git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git
 # シンボリックリンク
 mkdir -p "${HOME}/.config"
 CURRENT_DIR=$(cd "$(dirname "$0")" && pwd)
