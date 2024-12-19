@@ -9,6 +9,7 @@ alias cdso='cd /Users/ebarayuuga/Documents/so_long'
 alias chrome='open /Applications/Google\ Chrome.app/'
 alias docker-rm='docker rm -f `(docker ps -aq)`'
 alias docker-rmi='docker rmi -f `(docker images -aq)`'
+alias g++='clang++ -std=c++20'
 # Created by `pipx` on 2024-08-09 13:57:16
 export PATH="$PATH:/Users/ebarayuuga/.local/bin"
 export PATH="/opt/X11/bin/:$PATH"
@@ -27,10 +28,10 @@ GIT_PS1_SHOWUPSTREAM=auto
 setopt PROMPT_SUBST
 PROMPT='%F{yellow}%D %*%f%F{blue}(%M)%f: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")%f
 %F{green}%n%f %% '
+
 ## lang
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
-
 # color
 autoload -Uz colors
 colors
@@ -132,7 +133,6 @@ alias la='ls -Fa --color=auto'
 alias ll='ls -FalG --color=auto'
 alias mysql='mysql --auto-rehash'
 alias vi=$EDITOR
-alias v='nvim'
 
 # global alias
 alias -g L='| less'
@@ -170,9 +170,4 @@ tm() {
 [[ -e /usr/share/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 [[ -e /lib/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 
-
-PATH="/Users/ebarayuuga/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/ebarayuuga/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/ebarayuuga/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/ebarayuuga/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/ebarayuuga/perl5"; export PERL_MM_OPT;
+source /Users/ebarayuuga/dotfiles/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
