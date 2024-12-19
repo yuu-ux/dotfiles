@@ -1,11 +1,11 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
     lazypath,
   })
 end
@@ -17,6 +17,10 @@ require('lazy').setup({
     require('plugins/telescope'),
     require('plugins/nvim-web-devicons'),
     require('plugins/lualine'),
+    require('plugins/hlchunk'),
+    require('plugins/neo-tree'),
+    require('plugins/bufferline'),
+    { 'stevearc/aerial.nvim' },
     { 'lewis6991/gitsigns.nvim' },
     { 'tpope/vim-fugitive' },
     { 'nvim-lua/plenary.nvim' },
@@ -32,7 +36,5 @@ require('lazy').setup({
     { 'hrsh7th/cmp-cmdline' },
     { 'hrsh7th/nvim-cmp' },
     { 'dcampos/nvim-snippy' },
-    { 'shellRaining/hlchunk.nvim' },
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-    { 'stevearc/aerial.nvim' },
 })
