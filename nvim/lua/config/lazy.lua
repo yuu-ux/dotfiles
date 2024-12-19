@@ -20,7 +20,7 @@ require('lazy').setup({
     require('plugins/hlchunk'),
     require('plugins/neo-tree'),
     require('plugins/bufferline'),
-    { 'stevearc/aerial.nvim' },
+    require('plugins/aerial'),
     { 'lewis6991/gitsigns.nvim' },
     { 'tpope/vim-fugitive' },
     { 'nvim-lua/plenary.nvim' },
