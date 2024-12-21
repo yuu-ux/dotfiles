@@ -6,6 +6,7 @@ git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git
 mkdir -p "${HOME}/.config"
 CURRENT_DIR=$(cd "$(dirname "$0")" && pwd)
 ln -snf ${CURRENT_DIR}/.zshrc ${HOME}/.zshrc
+ln -snf ${CURRENT_DIR}/.gitconfig ${HOME}/.gitconfig
 for dir in *
 do
     if [ ${dir} = 'tmux' ]; then
@@ -15,12 +16,6 @@ do
         ln -snf ${CURRENT_DIR}/${dir} ${HOME}/.config/${dir}
     fi
 done
-
-# コミットテンプレート追加
-# TODO ファイル内ですでに指定されていたら追記しないように条件分岐したい
-echo "
-[commit]
-  template = ~/dotfiles/.gitmessages" >> ${HOME}/.gitconfig
 
 # デフォルトのエディタを変更
 git config --global core.editor nvim
