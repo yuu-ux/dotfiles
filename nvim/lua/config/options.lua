@@ -88,4 +88,12 @@ opt.updatetime = 100 -- ms to wait for trigger an e
 
 opt.shortmess:append("c")
 
+-- 保存時に末尾のスペースを削除する
+vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*',
+    command = ':%s/\\s\\+$//e',
+})
 
+---- ファイルタイプ ----
+vim.api.nvim_command('autocmd BufNewFile,BufRead *.ddl,*.sql setfiletype sql')
+vim.api.nvim_command('autocmd BufNewFile,BufRead *.tt,*.inc setfiletype tt2html')
