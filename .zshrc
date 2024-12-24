@@ -171,4 +171,4 @@ tm() {
 [[ -e /lib/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 
 export PATH=$(dirname "${0}")/fzf-zsh-plugin/bin:${PATH}
-source /Users/ebarayuuga/dotfiles/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
+source $HOME/dotfiles/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
