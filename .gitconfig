@@ -20,7 +20,7 @@
 [alias]
 	co = checkout
     st = status
-    ss = stash save
+    ss = stash save -u
     sp = stash pop
     sl = stash list
     df = diff
