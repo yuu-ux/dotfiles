@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     -- spec = 'plugins',
-    -- { 'neoclide/coc.nvim', branch = 'release' },
+    require('plugins/nvim-autopairs'),
     require('plugins/tokyonight'),
     require('plugins/copilot-cmp'),
     require('plugins/CopilotChat'),
