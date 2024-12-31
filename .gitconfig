@@ -20,6 +20,11 @@
 [alias]
 	co = checkout
     st = status
+    ss = stash save
+    sp = stash pop
+    sl = stash list
+    df = diff
+    cm = commit
 [pager]
     diff = delta
     log = delta
@@ -31,5 +36,4 @@
     syntax-theme = Monokai Extended
     navigate = true
     side-by-side = true
-[interactive]
-    diffFilter = delta --color-only
+    file-style = "bold yellow"
