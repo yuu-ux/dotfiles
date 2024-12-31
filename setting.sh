@@ -16,6 +16,3 @@ do
         ln -snf ${CURRENT_DIR}/${dir} ${HOME}/.config/${dir}
     fi
 done
-
-# デフォルトのエディタを変更
-git config --global core.editor nvim
