@@ -10,6 +10,7 @@ alias chrome='open /Applications/Google\ Chrome.app/'
 alias docker-rm='docker rm -f `(docker ps -aq)`'
 alias docker-rmi='docker rmi -f `(docker images -aq)`'
 alias g++='clang++ -std=c++20'
+alias rgrep='grep -r --color'
 # Created by `pipx` on 2024-08-09 13:57:16
 export PATH="$PATH:/Users/ebarayuuga/.local/bin"
 export PATH="/opt/X11/bin/:$PATH"
@@ -170,5 +171,5 @@ tm() {
 [[ -e /usr/share/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 [[ -e /lib/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 
-export PATH=$(dirname "${0}")/fzf-zsh-plugin/bin:${PATH}
+export PATH=$HOME/dotfiles/fzf-zsh-plugin/bin:${PATH}
 source $HOME/dotfiles/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
