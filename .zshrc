@@ -14,11 +14,6 @@ alias rgrep='grep -r --color'
 # Created by `pipx` on 2024-08-09 13:57:16
 export PATH="$PATH:/Users/ebarayuuga/.local/bin"
 export PATH="/opt/X11/bin/:$PATH"
-if [ -e /usr/local/opt/asdf/libexec/asdf.sh ]; then
-    . /usr/local/opt/asdf/libexec/asdf.sh
-else
-    . "$HOME/.asdf/asdf.sh"
-fi
 source ~/.zsh/git-prompt.sh
 
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -117,17 +112,6 @@ zstyle ":chpwd:*" recent-dirs-default true
 zstyle ':completion:*:*:cdr:*:*' menu selection
 bindkey -e
 
-# export EDITOR
-if [ -f $HOME/.asdf/shims/nvim ]; then
-  export EDITOR=$HOME/.asdf/shims/nvim;
-elif [ -f $HOME/local/bin/vim ]; then
-  export EDITOR=$HOME/local/bin/vim
-elif [ -f /usr/local/bin/vim ]; then
-  export EDITOR=/usr/local/bin/vim
-elif [ -f /usr/bin/vim ]; then
-  export EDITOR=/usr/bin/vim
-fi
-
 # alias
 alias ls='ls -F --color=auto'
 alias la='ls -Fa --color=auto'
@@ -147,18 +131,6 @@ alias -g H='| head'
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
-
-# fzf
-if version_fzf="$(asdf current fzf 2>/dev/null | perl -pe 's/[^\s]+\s+([^\s]+)\s+[^\s]+/$1/')" && [ "${version_fzf}x" != "x" ]; then
-  if [[ ! "$PATH" == *${HOME}/.asdf/installs/fzf/${version_fzf}/bin* ]]; then
-    export PATH="${PATH:+${PATH}:}${HOME}/.asdf/installs/fzf/${version_fzf}/bin"
-  fi
-  [[ $- == *i* ]] && source "${HOME}/.asdf/installs/fzf/${version_fzf}/shell/completion.zsh" 2>/dev/null
-  [ -f "${HOME}/.asdf/installs/fzf/${version_fzf}/shell/key-bindings.zsh" ] && source "${HOME}/.asdf/installs/fzf/${version_fzf}/shell/key-bindings.zsh" 2>/dev/null
-  [ -f "${HOME}/settings/dotfiles/.zsh/fzf_function.zsh" ] && source "${HOME}/settings/dotfiles/.zsh/fzf_function.zsh" 2>/dev/null
-  export FZF_DEFAULT_OPTS='--height 40% --reverse'
-  export FZF_TMUX_OPTS='-p'
-fi
 
 tm() {
   [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
@@ -194,3 +166,4 @@ zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
+eval "$(~/.local/bin/mise activate zsh)"
