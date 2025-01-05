@@ -1,6 +1,6 @@
 [user]
-	name = yuu-ux\n\n
-	email = yuugaehara@gmail.com
+    name  = 'Yuga EHARA'
+    email = yehara@moove.co.jp
 [core]
 	editor = nvim
 	excludesfile = /Users/ebarayuuga/.gitignore_global

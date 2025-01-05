@@ -1,19 +1,14 @@
+alias grep='grep --binary-files=without-match'
+alias rgrep='grep -r --color --binary-files=without-match'
 alias add='git add'
 alias commit='git commit'
 alias push='git push'
 alias v='nvim'
-alias examshell='bash -c "$(curl https://grademe.fr)"'
-alias cdalgo='/Users/ebarayuuga/Documents/algosiki'
-alias nor='/Users/ebarayuuga/Library/Python/3.11/bin/norminette'
-alias cdso='cd /Users/ebarayuuga/Documents/so_long'
 alias chrome='open /Applications/Google\ Chrome.app/'
-alias docker-rm='docker rm -f `(docker ps -aq)`'
-alias docker-rmi='docker rmi -f `(docker images -aq)`'
-alias g++='clang++ -std=c++20'
-alias rgrep='grep -r --color'
-# Created by `pipx` on 2024-08-09 13:57:16
-export PATH="$PATH:/Users/ebarayuuga/.local/bin"
-export PATH="/opt/X11/bin/:$PATH"
+alias mr='/Users/yehara/Documents/create_mr.sh'
+alias vtrans='/Users/yehara/Documents/open_trans.sh'
+. /usr/local/opt/asdf/libexec/asdf.sh
+alias tminit='/Users/yehara/Documents/tmux_init.sh'
 source ~/.zsh/git-prompt.sh
 
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -95,7 +90,7 @@ autoload -Uz compinit
 compinit -u
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 大文字と小文字の区別しない
 zstyle ':completion:*:default' menu select=2
-
+setopt menu_complete
 # Ctrl+rでヒストリーのインクリメンタルサーチ、Ctrl+sで逆順
 bindkey '^r' history-incremental-pattern-search-backward
 bindkey '^s' history-incremental-pattern-search-forward
