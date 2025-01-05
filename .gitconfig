@@ -25,6 +25,7 @@
     sl = stash list
     df = diff
     cm = commit
+    ad = add
 [pager]
     diff = delta
     log = delta
