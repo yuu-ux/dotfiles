@@ -7,7 +7,6 @@ alias v='nvim'
 alias chrome='open /Applications/Google\ Chrome.app/'
 alias mr='/Users/yehara/Documents/create_mr.sh'
 alias vtrans='/Users/yehara/Documents/open_trans.sh'
-. /usr/local/opt/asdf/libexec/asdf.sh
 alias tminit='/Users/yehara/Documents/tmux_init.sh'
 source ~/.zsh/git-prompt.sh
 
