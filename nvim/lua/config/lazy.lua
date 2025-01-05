@@ -13,10 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     -- spec = 'plugins',
+    require('plugins/CopilotChat'),
     require('plugins/nvim-autopairs'),
     require('plugins/tokyonight'),
-    require('plugins/copilot-cmp'),
-    require('plugins/CopilotChat'),
     require('plugins/telescope'),
     require('plugins/nvim-web-devicons'),
     require('plugins/lualine'),
