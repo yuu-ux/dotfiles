@@ -4,6 +4,7 @@ local g = vim.g
 -- リーダーキー
 g.mapleader = " "
 g.maplocalleader = "\\"
+vim.g.copilot_enabled = false
 
 -- 無効にするビルトインプラグイン
 g["loaded_2html_plugin"] = 1
