@@ -1,6 +1,5 @@
 local keymap = vim.keymap
 
--- リセット
 keymap.set('n', 'j', 'gj')
 keymap.set('n', 'k', 'gk')
 keymap.set('v', 'j', 'gj')
