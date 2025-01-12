@@ -9,7 +9,7 @@ return {
 
         local Rule = require("nvim-autopairs.rule")
         npairs.add_rules({
-            Rule("<", ">"),
+            Rule("<", ">", "c"),
         })
     end,
 }
