@@ -1,8 +1,5 @@
 alias grep='grep --binary-files=without-match'
-alias rgrep='grep -r --color --binary-files=without-match'
-alias add='git add'
-alias commit='git commit'
-alias push='git push'
+alias rg='grep -r --color --binary-files=without-match'
 alias v='nvim'
 alias chrome='open /Applications/Google\ Chrome.app/'
 alias mr='/Users/yehara/Documents/create_mr.sh'
@@ -160,4 +157,5 @@ zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
+bindkey '^l' autosuggest-accept
 eval "$(~/.local/bin/mise activate zsh)"
