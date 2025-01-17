@@ -1,6 +1,3 @@
-alias add='git add'
-alias commit='git commit'
-alias push='git push'
 alias v='nvim'
 alias examshell='bash -c "$(curl https://grademe.fr)"'
 alias cdalgo='/Users/ebarayuuga/Documents/algosiki'
@@ -10,7 +7,7 @@ alias chrome='open /Applications/Google\ Chrome.app/'
 alias docker-rm='docker rm -f `(docker ps -aq)`'
 alias docker-rmi='docker rmi -f `(docker images -aq)`'
 alias g++='clang++ -std=c++20'
-alias rgrep='grep -r --color'
+alias rg='grep -r --color'
 # Created by `pipx` on 2024-08-09 13:57:16
 export PATH="$PATH:/Users/ebarayuuga/.local/bin"
 export PATH="/opt/X11/bin/:$PATH"
@@ -167,3 +164,4 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
 eval "$(~/.local/bin/mise activate zsh)"
+bindkey '^l' autosuggest-accept
