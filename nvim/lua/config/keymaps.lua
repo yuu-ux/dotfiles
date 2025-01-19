@@ -19,7 +19,7 @@ keymap.set("", "#", "<Nop>", {noremap = true, silent = true, desc = "Disable # k
 keymap.set("", "<Leader>n", "<Nop>", {noremap = true, silent = true, desc = "Disable <Leader>n key"})
 keymap.set("", "<Space>", "<Nop>", {noremap = true, silent = true, desc = "Disable <Space> key"})
 keymap.set("n", "Q", "", {noremap = true, silent = true, desc = "Disable Q key"})
-keymap.set("n", "nh", ":nohl<CR>", {noremap = true, silent = true, desc = "Clear search highlighting"})
+keymap.set("n", "<Esc>", ":nohl<CR>", {noremap = true, silent = true, desc = "Clear search highlighting"})
 keymap.set("n", "d", '"_d', {noremap = true, silent = true})
 keymap.set("x", "d", '"_d', {noremap = true, silent = true})
 
