@@ -4,6 +4,7 @@ local g = vim.g
 -- リーダーキー
 g.mapleader = " "
 g.maplocalleader = "\\"
+vim.g.copilot_enabled = false
 
 -- 無効にするビルトインプラグイン
 g["loaded_2html_plugin"] = 1
@@ -94,6 +95,14 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     command = ':%s/\\s\\+$//e',
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove("c")
+    vim.opt_local.formatoptions:remove("r")
+    vim.opt_local.formatoptions:remove("o")
+  end,
+})
 ---- ファイルタイプ ----
 vim.api.nvim_command('autocmd BufNewFile,BufRead *.ddl,*.sql setfiletype sql')
 vim.api.nvim_command('autocmd BufNewFile,BufRead *.tt,*.inc setfiletype tt2html')
