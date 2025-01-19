@@ -107,3 +107,26 @@ vim.api.nvim_create_autocmd("FileType", {
 ---- ファイルタイプ ----
 vim.api.nvim_command('autocmd BufNewFile,BufRead *.ddl,*.sql setfiletype sql')
 vim.api.nvim_command('autocmd BufNewFile,BufRead *.tt,*.inc setfiletype tt2html')
+
+-- coc plugins
+g.coc_global_extensions = {
+    "coc-json", -- for coc-settings.json
+    "coc-spell-checker",
+    "coc-tsserver",
+    "coc-yaml",
+    "coc-perl",
+    "coc-sh",
+    "@yaegassy/coc-pylsp",
+    --"coc-rust-analyzer",
+    -- "@yaegassy/coc-volar",
+    "coc-go",
+    --"coc-eslint",
+    -- "coc-jedi",
+    -- "coc-pyright",
+    -- "coc-phpls",
+     'coc-snippets', -- need python
+    -- "coc-tabnine",
+    -- '@yaegassy/coc-tailwindcss3',
+    -- 'coc-webview',
+    -- 'coc-markdown-preview-enhanced',
+}

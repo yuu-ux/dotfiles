@@ -1,0 +1,18 @@
+{
+  "pylsp.builtin.enableInstallPythonLspRuff": true,
+  // ruff plugin を使うために無効化
+  "pylsp.plugins.pycodestyle.enabled": false,
+  "pylsp.plugins.pyflakes.enabled": false,
+  "pylsp.plugins.mccabe.enabled": false,
+  "pylsp.plugins.pyls_isort.enabled": false,
+  // import エラーがうるさかったら 行選択して:sortする
+  "pylsp.plugins.ruff.config": "docker/check/ruff.toml",
+  "pylsp.plugins.jedi.extra_paths": [
+    "app_venv/lib/python3.12/site-packages",
+    "admin/.venv/lib/python3.12/site-packages",
+    "app",
+    "admin"
+  ],
+  "snippets.ultisnips.pythonPrompt": false,
+}
+

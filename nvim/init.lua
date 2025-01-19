@@ -5,14 +5,3 @@ vim.scriptencoding = 'utf-8'
 require('config/options')
 require('config/keymaps')
 require('config/lazy')
-
--- mason設定
-require('mason').setup()
-require('mason-lspconfig').setup {
-    ensure_installed = {'lua_ls', 'pyright'}
-}
-
-require 'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or 'all' (the listed parsers MUST always be installed)
-    ensure_installed = {'c', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline'}
-}
