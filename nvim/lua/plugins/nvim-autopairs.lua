@@ -11,5 +11,8 @@ return {
         npairs.add_rules({
             Rule("<", ">", "c"),
         })
+        npairs.add_rules({
+            Rule("<", ">", "html"),
+        })
     end,
 }
