@@ -12,6 +12,15 @@ alias rg='grep -r --color'
 export PATH="$PATH:/Users/ebarayuuga/.local/bin"
 export PATH="/opt/X11/bin/:$PATH"
 source ~/.zsh/git-prompt.sh
+alias d='docker'
+alias dc='docker compose'
+alias dcps='docker compose ps'
+alias dcud='docker compose up -d'
+alias dcudb='docker compose up -d --build'
+alias dce='docker compose exec'
+alias dcl='docker compose logs'
+alias dcd='docker compose down'
+alias dcbnc='docker compose build --no-cache'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
