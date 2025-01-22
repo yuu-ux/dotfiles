@@ -74,6 +74,7 @@ opt.backspace = {"indent", "eol", "start"} -- バックスペースでインデ�
 opt.whichwrap = {b = true, s = true, h = true, l = true, ["<"] = true, [">"] = true, ["["] = true, ["]"] = true} -- 行頭や行末で左右に移動した際に行をまたいで移動ができるようにする
 
 opt.ignorecase = true -- 検索時に大文字小文字を区別しない
+opt.fileignorecase = true
 opt.smartcase = true -- 検索時に大文字が含まれる場合のみ大文字小文字を区別する
 opt.hlsearch = true -- 前回の検索パターンが存在する場合にマッチするテキストを強調表示する
 
