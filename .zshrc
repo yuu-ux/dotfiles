@@ -1,6 +1,4 @@
 alias v='nvim'
-alias examshell='bash -c "$(curl https://grademe.fr)"'
-alias cdalgo='/Users/ebarayuuga/Documents/algosiki'
 alias nor='/Users/ebarayuuga/Library/Python/3.11/bin/norminette'
 alias cdso='cd /Users/ebarayuuga/Documents/so_long'
 alias chrome='open /Applications/Google\ Chrome.app/'
@@ -140,6 +138,7 @@ tm() {
 [[ -e /usr/share/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 [[ -e /lib/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 
+<<<<<<< HEAD
 export PATH=$HOME/dotfiles/fzf-zsh-plugin/bin:${PATH}
 source $HOME/dotfiles/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
 source $HOME/dotfiles/fzf-tab/fzf-tab.plugin.zsh
@@ -165,3 +164,7 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 eval "$(~/.local/bin/mise activate zsh)"
 bindkey '^l' autosuggest-accept
+=======
+# Load Homebrew config script
+source $HOME/.brewconfig.zsh
+>>>>>>> c189f286bf6a11c282e458c10a1a2fcfe67db0a0
