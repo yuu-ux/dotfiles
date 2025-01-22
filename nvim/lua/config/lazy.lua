@@ -28,6 +28,7 @@ require('lazy').setup({
     require('plugins/nvim-cmp'),
     require('plugins/toggleterm'),
     require('plugins/Comment'),
+    require('plugins/42-header'),
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
