@@ -10,4 +10,6 @@ require('config/lazy')
 require('mason').setup()
 require('mason-lspconfig').setup {
     ensure_installed = {'lua_ls', 'pyright'}
+}
+
 require('function_lines_counter').setup()
