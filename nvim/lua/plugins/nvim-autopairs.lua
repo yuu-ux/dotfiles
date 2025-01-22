@@ -14,5 +14,8 @@ return {
         npairs.add_rules({
             Rule("<", ">", "html"),
         })
+        npairs.add_rules({
+            Rule("%", "%", "html"),
+        })
     end,
 }
