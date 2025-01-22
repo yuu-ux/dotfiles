@@ -1,6 +1,7 @@
 local keymap = vim.keymap
 
 -- リセット
+keymap.set('n', '<leader>hi', ':TSEnable highlight<CR>', {noremap = true, silent = true })
 keymap.set('n', 'j', 'gj')
 keymap.set('n', 'k', 'gk')
 keymap.set('v', 'j', 'gj')
