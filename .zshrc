@@ -5,6 +5,8 @@ alias chrome='open /Applications/Google\ Chrome.app/'
 alias mr='/Users/yehara/Documents/create_mr.sh'
 alias vtrans='/Users/yehara/Documents/open_trans.sh'
 alias tminit='/Users/yehara/Documents/tmux_init.sh'
+alias deploy='/Users/yehara/Documents/deploy.sh'
+alias sco='/Users/yehara/Documents/checkout.sh'
 source ~/.zsh/git-prompt.sh
 
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -159,3 +161,9 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 bindkey '^l' autosuggest-accept
 eval "$(~/.local/bin/mise activate zsh)"
+if [[ ! -d ~/.zsh-autopair ]]; then
+  git clone https://github.com/hlissner/zsh-autopair ~/.zsh-autopair
+fi
+
+source ~/.zsh-autopair/autopair.zsh
+autopair-init
