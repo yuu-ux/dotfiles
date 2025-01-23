@@ -9,7 +9,10 @@ return {
 
         local Rule = require("nvim-autopairs.rule")
         npairs.add_rules({
-            Rule("<", ">"),
+            Rule("<", ">", "html"),
+        })
+        npairs.add_rules({
+            Rule("<", ">", "htmldjango"),
         })
     end,
 }
