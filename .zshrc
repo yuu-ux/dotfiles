@@ -165,3 +165,9 @@ eval "$(~/.local/bin/mise activate zsh)"
 bindkey '^l' autosuggest-accept
 # Load Homebrew config script
 source $HOME/.brewconfig.zsh
+if [[ ! -d ~/.zsh-autopair ]]; then
+  git clone https://github.com/hlissner/zsh-autopair ~/.zsh-autopair
+fi
+
+source ~/.zsh-autopair/autopair.zsh
+autopair-init
