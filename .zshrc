@@ -21,8 +21,8 @@ PROMPT='%F{yellow}%D %*%f%F{blue}(%M)%f: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")
 %F{green}%n%f %% '
 
 ## lang
-export LANG=ja_JP.UTF-8
-export LC_ALL=ja_JP.UTF-8
+# export LANG=ja_JP.UTF-8
+# export LC_ALL=ja_JP.UTF-8
 # color
 autoload -Uz colors
 colors
