@@ -27,7 +27,7 @@ return {
                 vim.cmd('execute "!" . &keywordprg . " " . expand("<cword>")')
             end
         end
-        vim.keymap.set("n", "K", ":lua CocShowDocumentation()<CR>", { silent = true })
+        vim.keymap.set("n", "H", ":lua CocShowDocumentation()<CR>", { silent = true })
         -- コードアクション(全て)
         vim.keymap.set("n", "cc", "<Plug>(coc-codeaction)", { silent = true })
         -- コードアクション(特定操作)
