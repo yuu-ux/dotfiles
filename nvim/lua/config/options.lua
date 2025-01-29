@@ -78,7 +78,7 @@ opt.fileignorecase = true
 opt.smartcase = true -- 検索時に大文字が含まれる場合のみ大文字小文字を区別する
 opt.hlsearch = true -- 前回の検索パターンが存在する場合にマッチするテキストを強調表示する
 
-opt.expandtab = true -- タブ入力を空白に変換する
+opt.expandtab = false -- タブ入力を空白に変換する
 opt.shiftwidth = 4 -- 自動インデント時に入力する空白の数する
 opt.tabstop = 4 -- タブが返還される空白数を指定する
 opt.smartindent = true -- 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
