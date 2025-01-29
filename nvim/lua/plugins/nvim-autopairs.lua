@@ -6,10 +6,5 @@ return {
         npairs.setup({
             check_ts = true,
         })
-
-        -- local Rule = require("nvim-autopairs.rule")
-        -- npairs.add_rules({
-        --     Rule("<", ">", "c"),
-        -- })
     end,
 }
