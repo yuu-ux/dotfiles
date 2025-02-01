@@ -9,9 +9,6 @@ return {
 
         local Rule = require("nvim-autopairs.rule")
         npairs.add_rules({
-            Rule("<", ">", "c"),
-        })
-        npairs.add_rules({
             Rule("<", ">", "html"),
         })
         npairs.add_rules({
