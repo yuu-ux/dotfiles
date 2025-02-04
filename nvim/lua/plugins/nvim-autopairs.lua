@@ -14,5 +14,23 @@ return {
         npairs.add_rules({
             Rule("<", ">", "htmldjango"),
         })
+        npairs.add_rules({
+            Rule("%", "%", "html"),
+        })
+        npairs.add_rules({
+            Rule("%", "%", "htmldjango"),
+        })
+        npairs.add_rules({
+            Rule("'", "'", "html"),
+        })
+        npairs.add_rules({
+            Rule("'", "'", "htmldjango"),
+        })
+        npairs.add_rules({
+            Rule("\"", "\"", "html"),
+        })
+        npairs.add_rules({
+            Rule("\"", "\"", "htmldjango"),
+        })
     end,
 }
