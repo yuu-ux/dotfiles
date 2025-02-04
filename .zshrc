@@ -1,5 +1,4 @@
-alias grep='grep --binary-files=without-match'
-alias rg='grep -r --color --binary-files=without-match'
+alias grep='grep -r --color --binary-files=without-match'
 alias v='nvim'
 alias chrome='open /Applications/Google\ Chrome.app/'
 alias mr='/Users/yehara/Documents/create_mr.sh'
