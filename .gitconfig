@@ -22,7 +22,10 @@
     ss = stash save -u
     sp = stash pop
     sl = stash list
+    sd = stash drop
+    ssp = stash show -p
     df = diff
+    b = branch
     cm = commit
     ad = add
 [pager]
