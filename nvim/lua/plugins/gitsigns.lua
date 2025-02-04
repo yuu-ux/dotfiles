@@ -16,6 +16,9 @@ return {
                 numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
                 linehl = false, -- Toggle with `:Gitsigns toggle_linehl` coc-spell-checker とハイライトがぶつかる
                 word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
+                vim.api.nvim_set_hl(0, "GitSignsAddInline", { fg = nil, bg = "#5e8572", underline = true }),
+                vim.api.nvim_set_hl(0, "GitSignsChangeInline", { fg = nil, bg = "#5e8572", underline = true }),
+                vim.api.nvim_set_hl(0, "GitSignsDeleteInline", { fg = nil, bg = "#5e8572", underline = true }),
                 -- current_line_blame = true,
                 attach_to_untracked = false,
                 on_attach = function(bufnr)
