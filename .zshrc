@@ -9,6 +9,7 @@ alias docker-rmi='docker rmi -f `(docker images -aq)`'
 alias g++='clang++ -std=c++20'
 alias rg='grep -r --color'
 # Created by `pipx` on 2024-08-09 13:57:16
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$PATH:/Users/ebarayuuga/.local/bin"
 export PATH="/opt/X11/bin/:$PATH"
 source ~/.zsh/git-prompt.sh
