@@ -21,6 +21,7 @@
 	co = checkout
     st = status
     ss = stash save -u
+    sd = stash drop
     sp = stash pop
     sl = stash list
     df = diff
