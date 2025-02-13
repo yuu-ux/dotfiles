@@ -1,0 +1,9 @@
+[tools]
+bat = 'latest'
+delta = 'latest'
+eza = 'latest'
+neovim = 'latest'
+node = 'latest'
+ripgrep = 'latest'
+tmux = 'latest'
+yarn = 'latest'
