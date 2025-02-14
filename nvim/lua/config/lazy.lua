@@ -28,6 +28,7 @@ require('lazy').setup({
     require('plugins/coc'),
     require('plugins/vim-fugitive'),
     require('plugins/gitsigns'),
+    require('plugins/csvview'),
     { 'jesseduffield/lazygit' },
     { 'akinsho/toggleterm.nvim' },
     { 'nvim-lua/plenary.nvim' },
