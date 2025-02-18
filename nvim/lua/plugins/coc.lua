@@ -1,7 +1,8 @@
 return {
     "neoclide/coc.nvim",
     -- 最新版だとcoc-tsserverが動かない
-    commit = "fab97c7db68f24e5cc3c1cf753d3bd1819beef8f",
+    branch = "release",
+    -- commit = "fab97c7db68f24e5cc3c1cf753d3bd1819beef8f",
     build = "yarn install --frozen-lockfile",
     lazy = false,
     init = function()
