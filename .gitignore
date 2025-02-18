@@ -1,1 +1,4 @@
 fzf-zsh-plugin
+.zsh
+fzf-tab
+**/lazy-lock.json
