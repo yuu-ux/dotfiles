@@ -166,3 +166,5 @@ fi
 
 source ~/.zsh-autopair/autopair.zsh
 autopair-init
+
+export PATH=$PATH:/opt/homebrew/bin
