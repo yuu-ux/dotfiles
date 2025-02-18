@@ -40,3 +40,5 @@
     navigate = true
     side-by-side = true
     file-style = "bold yellow"
+[fetch]
+	prune = true
