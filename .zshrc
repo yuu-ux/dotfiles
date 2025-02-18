@@ -6,7 +6,16 @@ alias vtrans='/Users/yehara/Documents/open_trans.sh'
 alias tminit='/Users/yehara/Documents/tmux_init.sh'
 alias deploy='/Users/yehara/Documents/deploy.sh'
 alias sco='/Users/yehara/Documents/checkout.sh'
-source ~/.zsh/git-prompt.sh
+alias ls='ls -F --color=auto'
+alias la='ls -Fa --color=auto'
+alias ll='ls -FalG --color=auto'
+alias mysql='mysql --auto-rehash'
+alias -g L='| less'
+alias -g G='| grep'
+alias -g F='| fzf'
+alias -g W='| wc -l'
+alias -g T='| tail'
+alias -g H='| head'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -17,9 +26,6 @@ setopt PROMPT_SUBST
 PROMPT='%F{yellow}%D %*%f%F{blue}(%M)%f: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")%f
 %F{green}%n%f %% '
 
-## lang
-export LANG=ja_JP.UTF-8
-export LC_ALL=ja_JP.UTF-8
 # color
 autoload -Uz colors
 colors
@@ -104,25 +110,6 @@ zstyle ":chpwd:*" recent-dirs-default true
 zstyle ':completion:*:*:cdr:*:*' menu selection
 bindkey -e
 
-# alias
-alias ls='ls -F --color=auto'
-alias la='ls -Fa --color=auto'
-alias ll='ls -FalG --color=auto'
-alias mysql='mysql --auto-rehash'
-alias vi=$EDITOR
-
-# global alias
-alias -g L='| less'
-alias -g G='| grep'
-alias -g F='| fzf'
-alias -g W='| wc -l'
-alias -g T='| tail'
-alias -g H='| head'
-
-# 追加したパッケージのコマンドを優先
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
 
 tm() {
   [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
@@ -135,10 +122,23 @@ tm() {
 [[ -e /usr/share/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 [[ -e /lib/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 
+
+## lang
+export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
+# 追加したパッケージのコマンドを優先
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
 export PATH=$HOME/dotfiles/fzf-zsh-plugin/bin:${PATH}
+export PATH=$PATH:/opt/homebrew/bin
+
+source ~/.zsh/git-prompt.sh
 source $HOME/dotfiles/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
 source $HOME/dotfiles/fzf-tab/fzf-tab.plugin.zsh
 source $HOME/dotfiles/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh-autopair/autopair.zsh
+
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
@@ -164,7 +164,4 @@ if [[ ! -d ~/.zsh-autopair ]]; then
   git clone https://github.com/hlissner/zsh-autopair ~/.zsh-autopair
 fi
 
-source ~/.zsh-autopair/autopair.zsh
 autopair-init
-
-export PATH=$PATH:/opt/homebrew/bin
