@@ -26,6 +26,7 @@
     df = diff
     cm = commit
     ad = add
+	b = branch
 [pager]
     diff = delta
     log = delta
