@@ -123,15 +123,14 @@ tm() {
 [[ -e /lib/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 
 
-## lang
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
-# 追加したパッケージのコマンドを優先
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export PATH=$HOME/dotfiles/fzf-zsh-plugin/bin:${PATH}
 export PATH=$PATH:/opt/homebrew/bin
+export EDITOR=nvim
 
 source ~/.zsh/git-prompt.sh
 source $HOME/dotfiles/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
