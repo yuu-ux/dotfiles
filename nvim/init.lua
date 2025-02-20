@@ -17,3 +17,10 @@ require 'nvim-treesitter.configs'.setup {
     ensure_installed = {'c', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline'}
 }
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("YankSync", { clear = true }),
+    pattern = "*",
+    callback = function()
+        vim.fn.setreg("+", vim.fn.getreg("@@"))
+    end,
+})
