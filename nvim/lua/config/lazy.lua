@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     -- spec = 'plugins',
---    require('plugins/indent-blankline'),
+    require('plugins/indent-blankline'),
     require('plugins/CopilotChat'),
     require('plugins/nvim-autopairs'),
     require('plugins/tokyonight'),
