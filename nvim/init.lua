@@ -5,3 +5,11 @@ vim.scriptencoding = 'utf-8'
 require('config/options')
 require('config/keymaps')
 require('config/lazy')
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("YankSync", { clear = true }),
+    pattern = "*",
+    callback = function()
+        vim.fn.setreg("+", vim.fn.getreg("@@"))
+    end,
+})
