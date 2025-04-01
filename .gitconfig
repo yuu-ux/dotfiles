@@ -27,6 +27,8 @@
     df = diff
     cm = commit
     ad = add
+    sw = stash show
+    b = branch
 [pager]
     diff = delta
     log = delta
