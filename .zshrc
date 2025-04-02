@@ -1,5 +1,5 @@
 alias v='nvim'
-alias nor='/Users/ebarayuuga/Library/Python/3.11/bin/norminette'
+alias nor='/home/yehara/.local/bin/norminette'
 alias cdso='cd /Users/ebarayuuga/Documents/so_long'
 alias chrome='open /Applications/Google\ Chrome.app/'
 alias docker-rm='docker rm -f `(docker ps -aq)`'
@@ -11,13 +11,7 @@ export PATH="/opt/X11/bin/:$PATH"
 source ~/.zsh/git-prompt.sh
 alias d='docker'
 alias dc='docker compose'
-alias dcps='docker compose ps'
-alias dcud='docker compose up -d'
-alias dcudb='docker compose up -d --build'
-alias dce='docker compose exec'
-alias dcl='docker compose logs'
-alias dcd='docker compose down'
-alias dcbnc='docker compose build --no-cache'
+alias LONG_MAX='echo 9223372036854775808'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
