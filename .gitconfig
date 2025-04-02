@@ -1,5 +1,5 @@
 [user]
-	name = yuu-ux\n\n
+	name = yuu-ux
 	email = yuugaehara@gmail.com
 [core]
 	editor = nvim
@@ -23,6 +23,8 @@
     ss = stash save -u
     sp = stash pop
     sl = stash list
+	sw = stash show -p
+	sd = stash drop
     df = diff
     cm = commit
     ad = add
