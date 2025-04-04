@@ -1,6 +1,5 @@
 alias v='nvim'
 alias nor='/home/yehara/.local/bin/norminette'
-alias cdso='cd /Users/ebarayuuga/Documents/so_long'
 alias chrome='open /Applications/Google\ Chrome.app/'
 alias docker-rm='docker rm -f `(docker ps -aq)`'
 alias docker-rmi='docker rmi -f `(docker images -aq)`'
@@ -12,6 +11,10 @@ source ~/.zsh/git-prompt.sh
 alias d='docker'
 alias dc='docker compose'
 alias LONG_MAX='echo 9223372036854775808'
+alias zshr='nvim $HOME/.zshrc && source $HOME/.zshrc'
+alias minirt='cd $HOME/Documents/miniRT'
+alias parse_test='cd $HOME/Documents/miniRT/test/parse && $HOME/Documents/miniRT/test/parse/test.sh && minirt'
+alias tmp='cd /tmp'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
