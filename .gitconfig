@@ -3,7 +3,7 @@
 	email = yuugaehara@gmail.com
 [core]
 	editor = nvim
-	excludesfile = /Users/ebarayuuga/.gitignore_global
+	excludesfile = /home/yehara/.gitignore_global
 	quotepath = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
