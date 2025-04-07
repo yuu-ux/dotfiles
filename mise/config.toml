@@ -2,6 +2,8 @@
 bat = 'latest'
 delta = 'latest'
 eza = 'latest'
+hyperfine = "latest"
+mysql = "latest"
 neovim = 'latest'
 node = 'latest'
 ripgrep = 'latest'
