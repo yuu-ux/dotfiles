@@ -21,6 +21,11 @@ alias dce='docker compose exec'
 alias dcl='docker compose logs'
 alias dcd='docker compose down'
 alias dcbnc='docker compose build --no-cache'
+alias zshr='nvim $HOME/.zshrc && source $HOME/.zshrc'
+alias minirt='cd $HOME/Documents/42/miniRT'
+alias parse_test='cd $HOME/Documents/42/miniRT/test/parse && $HOME/Documents/42/miniRT/test/parse/test.sh && minirt'
+alias tmp='cd /tmp'
+alias dotfiles='cd $HOME/dotfiles'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
