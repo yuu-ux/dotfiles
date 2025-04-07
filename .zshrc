@@ -1,4 +1,3 @@
-alias grep='grep -r --color --binary-files=without-match'
 alias v='nvim'
 alias chrome='open /Applications/Google\ Chrome.app/'
 alias mr='/Users/yehara/Documents/create_mr.sh'
@@ -16,6 +15,11 @@ alias -g F='| fzf'
 alias -g W='| wc -l'
 alias -g T='| tail'
 alias -g H='| head'
+alias dc='docker'
+alias vconf='/Users/yehara/Documents/vconf.sh'
+alias tmp='cd /tmp'
+alias zshr='nvim ${HOME}/.zshrc && source ${HOME}/.zshrc'
+alias dotfiles='cd ${HOME}/dotfiles'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -23,7 +27,7 @@ GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWUPSTREAM=auto
 
 setopt PROMPT_SUBST
-PROMPT='%F{yellow}%D %*%f%F{blue}(%M)%f: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")%f
+PROMPT='%F{yellow}%D %*%f%F{blue}(${HOSTNAME})%f: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")%f
 %F{green}%n%f %% '
 
 # color
@@ -164,3 +168,4 @@ if [[ ! -d ~/.zsh-autopair ]]; then
 fi
 
 autopair-init
+[ -f "$HOME"/.zshrc.local ] && source "$HOME"/.zshrc.local
