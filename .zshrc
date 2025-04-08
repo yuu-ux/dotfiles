@@ -15,6 +15,7 @@ alias zshr='nvim $HOME/.zshrc && source $HOME/.zshrc'
 alias minirt='cd $HOME/Documents/miniRT'
 alias parse_test='cd $HOME/Documents/miniRT/test/parse && $HOME/Documents/miniRT/test/parse/test.sh && minirt'
 alias tmp='cd /tmp'
+alias dotfiles='cd $HOME/dotfiles'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
