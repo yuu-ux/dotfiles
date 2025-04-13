@@ -169,3 +169,59 @@ fi
 
 autopair-init
 [ -f "$HOME"/.zshrc.local ] && source "$HOME"/.zshrc.local
+
+rgsed() {
+  # クエリと置換文字列の入力
+  echo -n "検索クエリを入力してください: "
+  read query
+  echo -n "置換する文字列を入力してください: "
+  read replace
+
+  # 検索結果を配列に格納
+  local IFS=$'\n'
+  results=($(rg --vimgrep "$query"))
+
+  # 各結果に対して_rgsedを呼び出す
+  for line in "${results[@]}"; do
+    _rgsed "$line" "$query" "$replace"
+  done
+}
+
+_rgsed() {
+  local line="$1"
+  local query="$2"
+  local replace="$3"
+
+  # 検索結果のパース
+  local file=$(echo "$line" | awk -F ':' '{print $1}')
+  local lineno=$(echo "$line" | awk -F ':' '{print $2}')
+  local text=$(echo "$line" | awk -F ':' '{print $4}')
+
+  # 結果の表示
+  echo "======"
+  echo "$file : $lineno"
+  echo "$text"
+
+  # 操作の選択
+  echo "------"
+  echo "r: 置換"
+  echo "n: 次へ"
+  echo "e: エディターで開く"
+  echo -n "入力: "
+  read action
+
+  case $action in
+    r)
+      sed -i "" "${lineno}s|$query|$replace|" "$file"
+      ;;
+    n)
+      ;;
+    e)
+      nvim +$lineno "$file"
+      _rgsed "$line" "$query" "$replace"
+      ;;
+    *)
+      _rgsed "$line" "$query" "$replace"
+      ;;
+  esac
+}
