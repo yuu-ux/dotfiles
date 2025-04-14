@@ -31,7 +31,6 @@ require('lazy').setup({
     require('plugins/42-header'),
     require('plugins/vim-fugitive'),
     require('plugins/gitsigns'),
-	require('plugins/nvim-neoclip'),
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
