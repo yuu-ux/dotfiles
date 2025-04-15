@@ -20,6 +20,7 @@ alias vconf='/Users/yehara/Documents/vconf.sh'
 alias tmp='cd /tmp'
 alias zshr='nvim ${HOME}/.zshrc && source ${HOME}/.zshrc'
 alias dotfiles='cd ${HOME}/dotfiles'
+alias memo='v memo'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
