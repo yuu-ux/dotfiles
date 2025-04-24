@@ -1,11 +1,16 @@
 [tools]
+aws = "latest"
 bat = 'latest'
 delta = 'latest'
 eza = 'latest'
 hyperfine = "latest"
+jq = "latest"
+mc = "latest"
 mysql = "latest"
 neovim = 'latest'
 node = 'latest'
 ripgrep = 'latest'
+rust = "latest"
 tmux = 'latest'
+uv = "latest"
 yarn = 'latest'
