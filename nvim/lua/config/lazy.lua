@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     -- spec = 'plugins',
+    require('plugins/copilot'),
     require('plugins/indent-blankline'),
     require('plugins/CopilotChat'),
     require('plugins/nvim-autopairs'),
@@ -29,6 +30,7 @@ require('lazy').setup({
     require('plugins/vim-fugitive'),
     require('plugins/gitsigns'),
     require('plugins/csvview'),
+    require('plugins/avante'),
     { 'jesseduffield/lazygit' },
     { 'akinsho/toggleterm.nvim' },
     { 'nvim-lua/plenary.nvim' },
