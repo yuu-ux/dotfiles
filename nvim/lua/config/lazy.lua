@@ -30,6 +30,8 @@ require('lazy').setup({
     require('plugins/Comment'),
     require('plugins/vim-fugitive'),
     require('plugins/gitsigns'),
+    require('plugins/avante'),
+    require('plugins/render-markdown'),
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
