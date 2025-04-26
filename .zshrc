@@ -27,6 +27,7 @@ alias parse_test='cd $HOME/Documents/42/miniRT/test/parse && $HOME/Documents/42/
 alias tmp='cd /tmp'
 alias dotfiles='cd $HOME/dotfiles'
 alias mixi='cd /Users/ebarayuuga/Documents/42/road_to/mixi'
+alias memo='v memo'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
