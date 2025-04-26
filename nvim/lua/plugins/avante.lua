@@ -44,7 +44,7 @@ return {
             max_tokens = 8000,
         },
         copilot = {
-            model = "gpt-4o-2024-05-13",
+            model = "claude-3.7-sonnet",
             -- model = "gpt-4o-mini",
             max_tokens = 4096,
         },
