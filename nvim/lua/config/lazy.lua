@@ -32,6 +32,7 @@ require('lazy').setup({
     require('plugins/gitsigns'),
     require('plugins/avante'),
     require('plugins/render-markdown'),
+    require('plugins/lazydev'),
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
