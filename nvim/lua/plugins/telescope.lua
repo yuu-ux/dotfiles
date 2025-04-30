@@ -30,6 +30,12 @@ return {
         end,
         desc = 'Telescope help tags',
         },
+        {
+            'Q',
+            ':bdelete<CR>',
+            mode = n,
+            silent = true,
+        },
     },
     opts = {
         pickers = {

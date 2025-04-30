@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     -- spec = 'plugins',
-    require('plugins/copilot'),
+    -- require('plugins/copilot'),
     require('plugins/indent-blankline'),
     require('plugins/CopilotChat'),
     require('plugins/nvim-autopairs'),
@@ -31,8 +31,8 @@ require('lazy').setup({
     require('plugins/gitsigns'),
     require('plugins/csvview'),
     require('plugins/avante'),
+    require('plugins/toggleterm'),
     { 'jesseduffield/lazygit' },
-    { 'akinsho/toggleterm.nvim' },
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     { 'nvim-telescope/telescope-file-browser.nvim' },
