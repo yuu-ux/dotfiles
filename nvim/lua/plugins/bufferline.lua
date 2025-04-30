@@ -1,6 +1,7 @@
 return {
     'akinsho/bufferline.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    lazy = false,
     keys = {
         {
             '<Tab>',
@@ -15,15 +16,11 @@ return {
             silent = true,
         },
         {
-            '<F4>',
-            ':b #<CR>',
+            'Q',
+            ':bdelete<CR>',
             mode = 'n',
             silent = true,
         },
     },
     opts = {},
-    init = function()
-        vim.o.termguicolors = true
-    end,
-    lazy = false,
 }
