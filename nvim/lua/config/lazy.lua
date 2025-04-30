@@ -22,7 +22,6 @@ require('lazy').setup({
     require('plugins/hlchunk'),
     require('plugins/neo-tree'),
     require('plugins/bufferline'),
-    require('plugins/aerial'),
     require('plugins/nvim-lspconfig'),
     require('plugins/nvim-snippy'),
     require('plugins/nvim-cmp'),
