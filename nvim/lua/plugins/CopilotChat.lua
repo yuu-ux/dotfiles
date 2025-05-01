@@ -5,6 +5,10 @@ return {
       { 'nvim-lua/plenary.nvim' },
     },
     build = 'make tiktoken',
+    opts = {
+        model = 'claude-3.7-sonnet',
+        debug = true,
+    },
     config = function ()
         require('CopilotChat').setup({
         show_help = 'yes',
