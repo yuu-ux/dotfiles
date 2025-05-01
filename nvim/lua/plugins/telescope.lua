@@ -48,16 +48,6 @@ return {
                 override_file_sorter = true,
                 case_mode = 'smart_case'
             },
-            aerial = {
-                format_symbol = function(symbol_path, filetype)
-                    if filetype == 'json' or filetype == 'yaml' then
-                        return table.concat(symbol_path, '.')
-                    else
-                        return symbol_path[#symbol_path]
-                    end
-                end,
-                show_columns = 'both'
-            }
         }
     },
     config = function(_, opts)
@@ -65,6 +55,5 @@ return {
         telescope.setup(opts)
         telescope.load_extension('file_browser')
         telescope.load_extension('fzf')
-        telescope.load_extension('aerial')
     end
 }
