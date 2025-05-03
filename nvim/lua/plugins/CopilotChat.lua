@@ -4,6 +4,9 @@ return {
       { 'github/copilot.vim' },
       { 'nvim-lua/plenary.nvim' },
     },
+	opts = {
+		model = "claude-3.7-sonnet", -- モデル名を指定
+	},
     build = 'make tiktoken',
     config = function ()
         require('CopilotChat').setup({
