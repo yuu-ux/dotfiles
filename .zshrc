@@ -13,9 +13,10 @@ alias dc='docker compose'
 alias LONG_MAX='echo 9223372036854775808'
 alias zshr='nvim $HOME/.zshrc && source $HOME/.zshrc'
 alias minirt='cd $HOME/Documents/42/miniRT'
-alias parse_test='cd $HOME/Documents/miniRT/test/parse && $HOME/Documents/miniRT/test/parse/test.sh && minirt'
+alias parse_test='cd $HOME/Documents/miniRT/test/parse && $HOME/Documents/miniRT/test/parse/test.sh && cd $HOME/Documents/miniRT && rm test/parse/parse'
 alias tmp='cd /tmp'
 alias dotfiles='cd $HOME/dotfiles'
+alias memo='v memo'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -180,17 +181,14 @@ source ~/.zsh-autopair/autopair.zsh
 autopair-init
 
 rgsed() {
-  # クエリと置換文字列の入力
   echo -n "検索クエリを入力してください: "
   read query
   echo -n "置換する文字列を入力してください: "
   read replace
 
-  # 検索結果を配列に格納
   local IFS=$'\n'
   results=($(rg --vimgrep "$query"))
 
-  # 各結果に対して_rgsedを呼び出す
   for line in "${results[@]}"; do
     _rgsed "$line" "$query" "$replace"
   done
@@ -201,17 +199,13 @@ _rgsed() {
   local query="$2"
   local replace="$3"
 
-  # 検索結果のパース
-  local file=$(echo "$line" | awk -F ':' '{print $1}')
-  local lineno=$(echo "$line" | awk -F ':' '{print $2}')
-  local text=$(echo "$line" | awk -F ':' '{print $4}')
+  local file=$(echo "$line" | cut -d':' -f1)
+  local lineno=$(echo "$line" | cut -d':' -f2)
+  local text=$(echo "$line" | cut -d':' -f4-)
 
-  # 結果の表示
   echo "======"
   echo "$file : $lineno"
   echo "$text"
-
-  # 操作の選択
   echo "------"
   echo "r: 置換"
   echo "n: 次へ"
@@ -219,9 +213,12 @@ _rgsed() {
   echo -n "入力: "
   read action
 
-  case $action in
+  case "$action" in
     r)
-      sed -i "" "${lineno}s|$query|$replace|" "$file"
+      # sed用にクエリと置換文字列をエスケープしておく
+      esc_query=$(printf '%s\n' "$query" | sed 's/[&/\]/\\&/g')
+      esc_replace=$(printf '%s\n' "$replace" | sed 's/[&/\]/\\&/g')
+      sed -i "${lineno}s|$esc_query|$esc_replace|" "$file"
       ;;
     n)
       ;;
@@ -234,3 +231,4 @@ _rgsed() {
       ;;
   esac
 }
+
