@@ -107,3 +107,6 @@ vim.api.nvim_create_autocmd("FileType", {
 ---- ファイルタイプ ----
 vim.api.nvim_command('autocmd BufNewFile,BufRead *.ddl,*.sql setfiletype sql')
 vim.api.nvim_command('autocmd BufNewFile,BufRead *.tt,*.inc setfiletype tt2html')
+vim.api.nvim_create_user_command('Memo', function()
+    vim.cmd('edit memo')
+end, {})
