@@ -30,6 +30,7 @@ require('lazy').setup({
     require('plugins/vim-fugitive'),
     require('plugins/gitsigns'),
     require('plugins/csvview'),
+    require('plugins/hop'),
     require('plugins/avante'),
     require('plugins/toggleterm'),
     { 'jesseduffield/lazygit' },
