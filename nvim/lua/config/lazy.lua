@@ -32,6 +32,7 @@ require('lazy').setup({
     require('plugins/render-markdown'),
     require('plugins/lazydev'),
     require('plugins/rainbow-delimiters'),
+    require('plugins/hop'),
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
     require('plugins/nvim-lspconfig'),
