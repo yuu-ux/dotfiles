@@ -22,7 +22,9 @@ alias zshr='nvim ${HOME}/.zshrc && source ${HOME}/.zshrc'
 alias dotfiles='cd ${HOME}/dotfiles'
 alias memo='v memo'
 alias gl='git log --oneline --decorate --graph'
-alias gcon='nvim $(git diff --name-only --diff-filter=U)'
+alias vcon='nvim $(git diff --name-only --diff-filter=U)'
+alias vdf='git df origin/main --name-only | xargs nvim'
+alias gdfm='git df origin/main'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -172,6 +174,16 @@ fi
 
 autopair-init
 [ -f "$HOME"/.zshrc.local ] && source "$HOME"/.zshrc.local
+
+vrg() {
+    if [ -n "$1" ] && [ -n "$2" ]; then
+        rg -l "$1" "$2" | xargs nvim
+    elif [ -n "$1" ]; then
+        rg -l "$1" | xargs nvim
+    else
+        echo 'rg: ripgrep requires at least one pattern to execute a search'
+    fi
+}
 
 rgsed() {
   # クエリと置換文字列の入力
