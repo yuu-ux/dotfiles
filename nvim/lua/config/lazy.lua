@@ -30,7 +30,7 @@ require('lazy').setup({
     require('plugins/gitsigns'),
     require('plugins/avante'),
     require('plugins/render-markdown'),
-    require('plugins/lazydev'),
+    -- require('plugins/lazydev'),
     require('plugins/rainbow-delimiters'),
     require('plugins/hop'),
     { 'williamboman/mason.nvim' },
