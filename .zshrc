@@ -241,3 +241,25 @@ _rgsed() {
       ;;
   esac
 }
+
+# 成功時のビープ音
+beep_success() {
+  say -v "Boing" "Success"
+}
+
+# 失敗時のビープ音
+beep_fail() {
+  say -v "Boing" "Error"
+}
+
+# 状態に応じてビープ
+beep() {
+  local result=$?
+  if [ $result -eq 0 ]; then
+    beep_success
+    echo OK
+  else
+    beep_fail
+    echo ERROR
+  fi
+}
