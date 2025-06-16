@@ -33,6 +33,8 @@ require('lazy').setup({
     require('plugins/hop'),
     require('plugins/avante'),
     require('plugins/toggleterm'),
+    require('plugins/nvim-surround'),
+    require('plugins/render_markdown'),
     { 'jesseduffield/lazygit' },
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
