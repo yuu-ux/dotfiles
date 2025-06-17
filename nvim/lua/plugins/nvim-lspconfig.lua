@@ -12,7 +12,8 @@ return {
             pyright = {},
             ts_ls = {},
             lua_ls = {},
-            gopls ={},
+            gopls = {},
+            html = {},
         }
 
         for server, config in pairs(servers) do
