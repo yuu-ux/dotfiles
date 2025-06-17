@@ -29,7 +29,7 @@ require('lazy').setup({
     require('plugins/vim-fugitive'),
     require('plugins/gitsigns'),
     require('plugins/avante'),
-    require('plugins/render-markdown'),
+    require('plugins/render_markdown'),
     -- require('plugins/lazydev'),
     require('plugins/rainbow-delimiters'),
     require('plugins/hop'),
