@@ -13,13 +13,25 @@ alias dcl='docker compose logs'
 alias dcd='docker compose down'
 alias dcbnc='docker compose build --no-cache'
 alias zshr='nvim $HOME/.zshrc && source $HOME/.zshrc'
-alias minirt='cd $HOME/Documents/42/miniRT'
-alias parse_test='cd $HOME/Documents/42/miniRT/test/parse && $HOME/Documents/42/miniRT/test/parse/test.sh && minirt'
 alias tmp='cd /tmp'
 alias dotfiles='cd $HOME/dotfiles'
 alias mixi='cd /Users/ebarayuuga/Documents/42/road_to/mixi'
 alias memo='v memo'
 alias gst='git status'
+alias gdf='git diff'
+alias vdf='git diff --name-only | xargs nvim'
+alias gdfm='git diff origin/main'
+alias vdfm='git diff origin/main --name-only | xargs nvim'
+alias gad='git add'
+alias gcm='git commit'
+alias ter='terraform'
+alias g='git'
+alias doc='cd ~/Documents'
+alias gco='git checkout'
+alias gad='git add'
+alias gcm='git commit'
+alias glog='git log'
+alias vconf='git diff --name-only --diff-filter=U | xargs nvim'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -274,3 +286,8 @@ beep() {
     echo ERROR
   fi
 }
+
+terraform -install-autocomplete
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /Users/ebarayuuga/.local/share/mise/installs/terraform/1.12.1/terraform terraform
