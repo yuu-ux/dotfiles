@@ -14,5 +14,8 @@
     "admin"
   ],
   "snippets.ultisnips.pythonPrompt": false,
+  "cSpell.userWords": [
+    "noqa"
+  ],
 }
 
