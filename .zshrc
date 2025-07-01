@@ -1,3 +1,4 @@
+alias g='git'
 alias v='nvim'
 alias nor='/home/yehara/.local/bin/norminette'
 alias chrome='open /Applications/Google\ Chrome.app/'
@@ -17,6 +18,15 @@ alias parse_test='cd $HOME/Documents/miniRT/test/parse && $HOME/Documents/miniRT
 alias tmp='cd /tmp'
 alias dotfiles='cd $HOME/dotfiles'
 alias memo='v memo'
+alias gco='git checkout'
+alias gst='git status'
+alias gad='git add'
+alias gcm='git commit'
+alias gdfm='git diff origin/main'
+alias vdfm='git diff origin/main --name-only | xargs nvim'
+alias gdf='git diff'
+alias vdf='git diff --name-only | xargs nvim'
+alias glog='git log'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
