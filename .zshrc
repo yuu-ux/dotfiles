@@ -1,5 +1,4 @@
 alias v='nvim'
-alias nor='/Users/ebarayuuga/Library/Python/3.11/bin/norminette'
 alias docker-rm='docker rm -f `(docker ps -aq)`'
 alias docker-rmi='docker rmi -f `(docker images -aq)`'
 alias g++='clang++ -std=c++20'
@@ -15,7 +14,6 @@ alias dcbnc='docker compose build --no-cache'
 alias zshr='nvim $HOME/.zshrc && source $HOME/.zshrc'
 alias tmp='cd /tmp'
 alias dotfiles='cd $HOME/dotfiles'
-alias mixi='cd /Users/ebarayuuga/Documents/42/road_to/mixi'
 alias memo='v memo.md'
 alias gst='git status'
 alias gdf='git diff'
@@ -38,9 +36,6 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWUPSTREAM=auto
 
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$PATH:/Users/ebarayuuga/.local/bin"
-export PATH="/opt/X11/bin/:$PATH"
 source ~/.zsh/git-prompt.sh
 
 setopt PROMPT_SUBST
@@ -50,6 +45,9 @@ PROMPT='%F{yellow}%D %*%f%F{blue}(%M)%f: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")
 ## lang
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$PATH:/Users/ebarayuuga/.local/bin"
+export PATH="/opt/X11/bin/:$PATH"
 # color
 autoload -Uz colors
 colors
@@ -286,8 +284,6 @@ beep() {
     echo ERROR
   fi
 }
-
-terraform -install-autocomplete
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /Users/ebarayuuga/.local/share/mise/installs/terraform/1.12.1/terraform terraform
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+export PATH="/Users/ebarayuuga/Library/Python/3.11/bin:$PATH"
