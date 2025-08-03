@@ -110,3 +110,5 @@ vim.api.nvim_command('autocmd BufNewFile,BufRead *.tt,*.inc setfiletype tt2html'
 vim.api.nvim_create_user_command('Memo', function()
     vim.cmd('edit memo.md')
 end, {})
+
+g.python3_host_prog ="/Users/ebarayuuga/.local/share/mise/installs/python/3.13.5/bin/python"
