@@ -4,13 +4,13 @@ return {
     lazy = false,
     keys = {
         {
-            '<Tab>',
+            '<C-n>',
             ':bnext<CR>',
             mode = 'n',
             silent = true,
         },
         {
-            '<S-Tab>',
+            '<C-p>',
             ':bprevious<CR>',
             mode = 'n',
             silent = true,

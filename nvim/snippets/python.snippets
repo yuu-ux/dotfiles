@@ -1,0 +1,34 @@
+snippet mapi
+	map(int, input().split())
+
+snippet Ni
+	N = int(input())
+
+snippet Ai
+	A = list(map(int, input().split()))
+
+snippet fi
+	for i in range(N):
+
+snippet fj
+	for j in range(N):
+
+snippet fk
+	for k in range(N):
+
+snippet fcc
+	from collections import Counter
+
+snippet Si
+	S = input()
+
+snippet sv
+	def sieve(N):
+		is_prime = [True] * (N+1)
+		is_prime[:2] = [False] * 2
+		for i in range(2, (N//2)+1):
+			if not is_prime[i]:
+				continue
+			for j in range(i*i, N+1, i):
+				is_prime[j] = False
+		return is_prime
