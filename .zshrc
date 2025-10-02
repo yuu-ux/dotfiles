@@ -1,7 +1,7 @@
-alias v='nvim'
+# zmodload zsh/zprof && zprof
+# docker
 alias docker-rm='docker rm -f `(docker ps -aq)`'
 alias docker-rmi='docker rmi -f `(docker images -aq)`'
-alias g++='clang++ -std=c++20'
 alias d='docker'
 alias dc='docker compose'
 alias dcps='docker compose ps'
@@ -11,10 +11,14 @@ alias dce='docker compose exec'
 alias dcl='docker compose logs'
 alias dcd='docker compose down'
 alias dcbnc='docker compose build --no-cache'
-alias zshr='nvim $HOME/.zshrc && source $HOME/.zshrc'
+
+# cd
 alias tmp='cd /tmp'
 alias dotfiles='cd $HOME/dotfiles'
-alias memo='v memo.md'
+alias doc='cd ~/Documents'
+alias 42='cd ~/Documents/42'
+
+# git
 alias gst='git status'
 alias gdf='git diff'
 alias vdf='git diff --name-only | xargs nvim'
@@ -22,32 +26,41 @@ alias gdfm='git diff origin/main'
 alias vdfm='git diff origin/main --name-only | xargs nvim'
 alias gad='git add'
 alias gcm='git commit'
-alias ter='terraform'
 alias g='git'
-alias doc='cd ~/Documents'
 alias gco='git checkout'
 alias gad='git add'
 alias gcm='git commit'
 alias glog='git log'
 alias vconf='git diff --name-only --diff-filter=U | xargs nvim'
 
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWUPSTREAM=auto
+# other
+alias v='nvim'
+alias g++='clang++ -std=c++20'
+alias zshr='nvim $HOME/.zshrc && source $HOME/.zshrc'
+alias memo='v memo.md'
+alias ter='terraform'
+alias ll='ls -FalG --color=auto'
+alias vi=$EDITOR
+alias printpath='print -l $path'
 
+# prompt
 source ~/.zsh/git-prompt.sh
-
+GIT_PS1_SHOWUPSTREAM=auto
 setopt PROMPT_SUBST
 PROMPT='%F{yellow}%D %*%f%F{blue}(%M)%f: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")%f
 %F{green}%n%f %% '
 
 ## lang
+typeset -U path
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$PATH:/Users/ebarayuuga/.local/bin"
-export PATH="/opt/X11/bin/:$PATH"
+# export PATH="$PATH:/Users/ebarayuuga/.local/bin"
+# export PATH="/opt/X11/bin/:$PATH"
+# export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+# export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+# export PATH="/Users/ebarayuuga/Library/Python/3.11/bin:$PATH"
+
 # color
 autoload -Uz colors
 colors
@@ -132,20 +145,6 @@ zstyle ":chpwd:*" recent-dirs-default true
 zstyle ':completion:*:*:cdr:*:*' menu selection
 bindkey -e
 
-# alias
-alias ls='ls -F --color=auto'
-alias la='ls -Fa --color=auto'
-alias ll='ls -FalG --color=auto'
-alias mysql='mysql --auto-rehash'
-alias vi=$EDITOR
-
-# global alias
-alias -g L='| less'
-alias -g G='| grep'
-alias -g F='| fzf'
-alias -g W='| wc -l'
-alias -g T='| tail'
-alias -g H='| head'
 
 # 追加したパッケージのコマンドを優先
 export XDG_CONFIG_HOME=$HOME/.config
@@ -284,6 +283,10 @@ beep() {
     echo ERROR
   fi
 }
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
-export PATH="/Users/ebarayuuga/Library/Python/3.11/bin:$PATH"
+
+ojt() {
+    oj t -c "python ./$1.py" -d ./tests/
+}
+# if (which zprof > /dev/null) ;then
+#   zprof | cat
+# fi
