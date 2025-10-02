@@ -1,0 +1,6 @@
+snippet guard
+	#ifndef `!v toupper(substitute(expand('%:t:r'), '\.', '_', 'g'))`_H
+	# define `!v toupper(substitute(expand('%:t:r'), '\.', '_', 'g'))`_H
+
+
+	#endif

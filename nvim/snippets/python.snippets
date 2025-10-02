@@ -32,3 +32,27 @@ snippet sv
 			for j in range(i*i, N+1, i):
 				is_prime[j] = False
 		return is_prime
+snippet fcd
+	from collections import defaultdict
+snippet fsa
+	from string import ascii_lowercase
+
+snippet basen
+	def base_n(num_10,n):
+		if num_10 == 0:
+			return 0
+		str_n = ''
+		while num_10:
+			if num_10%n>=10:
+				return -1
+			str_n += str(num_10%n)
+			num_10 //= n
+		return int(str_n[::-1])
+
+snippet base10
+	def base_10(num_n,n):
+		num_10 = 0
+		for s in str(num_n):
+			num_10 *= n
+			num_10 += int(s)
+		return num_10
