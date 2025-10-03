@@ -40,13 +40,13 @@ opt.swapfile = false -- スワップファイルを作らない
 opt.backup = false -- バックアップファイルを作らない
 opt.writebackup = false -- ファイル上書き前にバックアップを作成しない
 opt.undofile = false -- アンドゥファイルを作成しない
-opt.completeopt = {"menuone", "noinsert", "noselect"} -- 補完メニューを設定する
+opt.completeopt = { "menuone", "noinsert", "noselect" } -- 補完メニューを設定する
 
 opt.encoding = "utf-8" -- neovim 内の文字エンコーディングを指定する
 opt.fileencoding = "utf-8" -- デフォルトの文字コードを指定する
-opt.fileencodings = {"utf-8", "euc-jp", "sjis", "iso-2022-jp"} -- 文字コードの自動認識順序を指定する
+opt.fileencodings = { "utf-8", "euc-jp", "sjis", "iso-2022-jp" } -- 文字コードの自動認識順序を指定する
 opt.fileformat = "unix" -- デフォルトの改行コードを指定する
-opt.fileformats = {"unix", "dos", "mac"} -- 改行コードの自動認識順序を指定する
+opt.fileformats = { "unix", "dos", "mac" } -- 改行コードの自動認識順序を指定する
 
 opt.showmode = false -- モードを非表示にする
 opt.showtabline = 0 -- タブラインの表示を指定する（「0」だと表示されない）
@@ -62,7 +62,7 @@ opt.termguicolors = true -- 24ビットRGBカラーを有効にする
 opt.laststatus = 2 -- 常にステータスラインを表示する
 opt.cmdheight = 2 -- コマンドラインの行数を指定する
 opt.list = true -- ホワイトスペースなどを表示する
-opt.listchars = {tab = ">.", trail = "_", extends = ">", precedes = "<"} -- 不可視文字の表示形式を指定する
+opt.listchars = { tab = ">.", trail = "_", extends = ">", precedes = "<" } -- 不可視文字の表示形式を指定する
 opt.cursorline = true -- カーソル行をハイライトする
 opt.conceallevel = 0 -- conceal 属性のテキストをどう表示するか指定する（「0」の場合、通常通り表示する）
 opt.signcolumn = "yes" -- 各種記号用カラムを常に表示（vim-gitgutterで未修正ファイルを変更した際のずれをなくすため）
@@ -70,8 +70,8 @@ opt.winblend = 10 -- フローティングウィンドウの透明度を指定�
 opt.pumblend = 10 -- ポップアップメニューの透明度を指定する（「0」の場合、非透明になる）
 opt.scrolloff = 8 -- スクロール時にカーソル行上下に表示する行数を指定する
 opt.sidescrolloff = 8 -- 横スクロール時にカーソルの左右に表示する桁数を指定する
-opt.backspace = {"indent", "eol", "start"} -- バックスペースでインデントなどを消せるようにする
-opt.whichwrap = {b = true, s = true, h = true, l = true, ["<"] = true, [">"] = true, ["["] = true, ["]"] = true} -- 行頭や行末で左右に移動した際に行をまたいで移動ができるようにする
+opt.backspace = { "indent", "eol", "start" } -- バックスペースでインデントなどを消せるようにする
+opt.whichwrap = { b = true, s = true, h = true, l = true, ["<"] = true, [">"] = true, ["["] = true, ["]"] = true } -- 行頭や行末で左右に移動した際に行をまたいで移動ができるようにする
 
 opt.ignorecase = true -- 検索時に大文字小文字を区別しない
 opt.fileignorecase = true
@@ -91,24 +91,24 @@ opt.updatetime = 100 -- ms to wait for trigger an e
 opt.shortmess:append("c")
 
 -- 保存時に末尾のスペースを削除する
-vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = '*',
-    command = ':%s/\\s\\+$//e',
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	command = ":%s/\\s\\+$//e",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
-  callback = function()
-    vim.opt_local.formatoptions:remove("c")
-    vim.opt_local.formatoptions:remove("r")
-    vim.opt_local.formatoptions:remove("o")
-  end,
+	pattern = "*",
+	callback = function()
+		vim.opt_local.formatoptions:remove("c")
+		vim.opt_local.formatoptions:remove("r")
+		vim.opt_local.formatoptions:remove("o")
+	end,
 })
 ---- ファイルタイプ ----
-vim.api.nvim_command('autocmd BufNewFile,BufRead *.ddl,*.sql setfiletype sql')
-vim.api.nvim_command('autocmd BufNewFile,BufRead *.tt,*.inc setfiletype tt2html')
-vim.api.nvim_create_user_command('Memo', function()
-    vim.cmd('edit memo.md')
+vim.api.nvim_command("autocmd BufNewFile,BufRead *.ddl,*.sql setfiletype sql")
+vim.api.nvim_command("autocmd BufNewFile,BufRead *.tt,*.inc setfiletype tt2html")
+vim.api.nvim_create_user_command("Memo", function()
+	vim.cmd("edit memo.md")
 end, {})
 
-g.python3_host_prog ="/Users/ebarayuuga/.local/share/mise/installs/python/3.13.5/bin/python"
+g.python3_host_prog = "/Users/ebarayuuga/.local/share/mise/installs/python/3.13.5/bin/python"
