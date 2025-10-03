@@ -1,55 +1,43 @@
 return {
-    {
-        'neovim/nvim-lspconfig',
-        dependencies = {
-            'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
-            'hrsh7th/cmp-nvim-lsp',
-        },
-        config = function()
-            local lspconfig = require('lspconfig')
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            local doc_highlight = vim.api.nvim_create_augroup("__doc_highlight", {})
-            local servers = {
-                clangd = {},
-                pyright = {},
-                ts_ls = {},
-                lua_ls = {},
-                gopls = {},
-                html = {},
-            }
+    'neovim/nvim-lspconfig',
+    dependencies = {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'hrsh7th/cmp-nvim-lsp',
+    },
+    config = function ()
+        -- setting mason
+        require('mason').setup()
+        require('mason-lspconfig').setup {
+            ensure_installed = {},
+            automatic_enable = false,
+        }
 
-            for server, config in pairs(servers) do
-                config.capabilities = capabilities
-                config.on_attach = function(client, bufnr)
-                    print("Attached to: " .. client.name)
-                    vim.opt.updatetime = 1000
-                    if client.supports_method("textDocument/documentHighlight") then
-                        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                            group = doc_highlight,
-                            buffer = bufnr,
-                            callback = vim.lsp.buf.document_highlight,
-                        })
-                        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-                            group = doc_highlight,
-                            buffer = bufnr,
-                            callback = vim.lsp.buf.clear_references,
-                        })
-                    end
+        -- setting lsp client
+        vim.lsp.config('*', {
+            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            on_attach = function (client, bufnr)
+                if client.supports_method('textDocument/documentHighlight') then
+                    local g = vim.api.nvim_create_augroup('LspDocHighlight_' .. bufnr, {})
+                    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+                        group = g,
+                        buffer = bufnr,
+                        callback = vim.lsp.buf.document_highlight,
+                    })
+                    vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                        group = g,
+                        buffer = bufnr,
+                        callback = vim.lsp.buf.clear_references,
+                    })
                 end
-                lspconfig[server].setup(config)
             end
+        })
 
-            vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-                vim.lsp.diagnostic.on_publish_diagnostics,
-                { virtual_text = false }
-            )
-
-            vim.cmd [[
-            highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-            highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-            highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-            ]]
-        end
-    }
+        -- setting highlight
+        vim.api.nvim_set_hl(0, "LspReferenceText",  { underline = true, fg = "#A00000", bg = "#104040" })
+        vim.api.nvim_set_hl(0, "LspReferenceRead",  { underline = true, fg = "#A00000", bg = "#104040" })
+        vim.api.nvim_set_hl(0, "LspReferenceWrite", { underline = true, fg = "#A00000", bg = "#104040" })
+        vim.lsp.enable({'clangd', 'pyright', 'ts_ls', 'lua_ls', 'gopls', 'html'})
+    end
 }
+
