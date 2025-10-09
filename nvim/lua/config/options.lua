@@ -112,3 +112,21 @@ vim.api.nvim_create_user_command("Memo", function()
 end, {})
 
 g.python3_host_prog = "/Users/ebarayuuga/.local/share/mise/installs/python/3.13.5/bin/python"
+
+local tab_width_candidates = { 2, 4 }
+local function select_and_apply_tab_width()
+	vim.ui.select(tab_width_candidates, { prompt = "Select the tab size" }, function(item, _)
+		if not item then
+			return
+		end
+
+		local width = tonumber(item)
+		if not width then
+			return
+		end
+
+		opt.shiftwidth = width
+		opt.tabstop = width
+	end)
+end
+vim.keymap.set("n", "<leader>m", select_and_apply_tab_width, { noremap = true, silent = true })
