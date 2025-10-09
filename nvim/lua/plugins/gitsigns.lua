@@ -68,7 +68,6 @@ return {
 			"master",
 			"staging",
 		}
-		vim.keymap.set("n", "m", ":lua SwitchGutter()<CR>", { noremap = true, silent = true })
 		local isSwitchGutter = false
 		function SwitchGutter()
 			if isSwitchGutter then
@@ -92,5 +91,6 @@ return {
 				isSwitchGutter = false
 			end)
 		end
+		vim.keymap.set("n", "m", SwitchGutter, { noremap = true, silent = true })
 	end,
 }
