@@ -61,3 +61,11 @@ snippet base10
 			num_10 *= n
 			num_10 += int(s)
 		return num_10
+
+snippet prefix
+	def build_prefix(arr):
+		"""区間の求め方: S[r]-S[l-1]"""
+		prefix = [0] * (len(arr) + 1)
+		for i, v in enumerate(arr, start=1):
+			prefix[i] = prefix[i - 1] + v
+		return prefix
