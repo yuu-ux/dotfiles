@@ -113,15 +113,14 @@ end, {})
 
 g.python3_host_prog = "/Users/ebarayuuga/.local/share/mise/installs/python/3.13.5/bin/python"
 
-local tab_width_candidates = { 2, 4 }
-local function select_and_apply_tab_width()
-	vim.ui.select(tab_width_candidates, { prompt = "Select the tab size" }, function(item, _)
-		if not item then
+local function input_and_apply_tab_width()
+	vim.ui.input({ prompt = "Enter the tab width: " }, function(input)
+		if not input then
 			return
 		end
 
-		local width = tonumber(item)
-		if not width then
+		local width = tonumber(input)
+		if not width or width <= 0 then
 			return
 		end
 
@@ -129,4 +128,4 @@ local function select_and_apply_tab_width()
 		opt.tabstop = width
 	end)
 end
-vim.keymap.set("n", "<leader>m", select_and_apply_tab_width, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>m", input_and_apply_tab_width, { noremap = true, silent = true })
