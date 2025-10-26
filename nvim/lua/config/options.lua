@@ -110,7 +110,12 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.tt,*.inc setfiletype tt2html"
 vim.api.nvim_create_user_command("Memo", function()
 	vim.cmd("edit memo.md")
 end, {})
-
+vim.api.nvim_create_user_command("E", function (opts)
+    local files = vim.fn.glob(opts.args, false, true)
+    for _, file in ipairs(files) do
+        vim.cmd.edit(file)
+    end
+end, { nargs = "+", complete = "file"})
 g.python3_host_prog = "/Users/ebarayuuga/.local/share/mise/installs/python/3.13.5/bin/python"
 
 local function input_and_apply_tab_width()
