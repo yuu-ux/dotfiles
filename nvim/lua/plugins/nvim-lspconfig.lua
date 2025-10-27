@@ -4,7 +4,6 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
-        "lspcontainers/lspcontainers.nvim",
 	},
 	config = function()
 		-- setting mason
@@ -33,27 +32,6 @@ return {
 				end
 			end,
 		})
-
-        vim.lsp.config.clangd = {
-            cmd = require("lspcontainers").command("clangd", {
-                image = 'webserv-dev',
-                cmd_builder = function (runtime, volume, image)
-                    return {
-                        runtime,
-                        "container",
-                        "run",
-                        "--rm",
-                        "--interactive",
-                        "--entrypoint",
-                        "clangd",
-                        "--volume",
-                        volume,
-                        image,
-                    }
-                end,
-            }),
-            root_markers = { '.git' },
-        }
 
 		-- setting highlight
 		vim.api.nvim_set_hl(0, "LspReferenceText", { underline = true, fg = "#A00000", bg = "#104040" })
