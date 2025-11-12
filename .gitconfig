@@ -3,7 +3,7 @@
 	email = yuugaehara@gmail.com
 [core]
 	editor = nvim
-	excludesfile = /Users/ebarayuuga/.gitignore_global
+	excludesfile = ~/dotfiles/.gitignore_global
 	quotepath = false
 [commit]
 	template = ~/dotfiles/.gitmessages
@@ -33,3 +33,5 @@
     file-style = "bold yellow"
 [init]
 	defaultBranch = main
+[diff]
+    external = difft
