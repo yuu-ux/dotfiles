@@ -19,6 +19,7 @@
     ad = add
     sw = stash show
     b = branch
+    cp = cherry-pick
 [pager]
     diff = delta
     log = delta
