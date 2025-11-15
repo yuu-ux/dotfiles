@@ -17,11 +17,13 @@ alias tmp='cd /tmp'
 alias dotfiles='cd $HOME/dotfiles'
 alias doc='cd ~/Documents'
 alias 42='cd ~/Documents/42'
+alias cweb='cd ~/work/Swebserv'
+alias webs='multipass shell webserv'
+alias work='cd ~/work'
 
 # git
 alias gst='git status'
 alias gdf='git diff'
-alias vdf='git diff --name-only | xargs nvim'
 alias gdfm='git diff origin/main'
 alias vdfm='git diff origin/main --name-only | xargs nvim'
 alias gad='git add'
@@ -195,6 +197,14 @@ fi
 source ~/.zsh-autopair/autopair.zsh
 autopair-init
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#d0d0d0,bg:#121212,hl:#5f87af --color=fg+:#d0d0d0,bg+:#262626,hl+:#5fd7ff --color=info:#afaf87,prompt:#d7005f,pointer:#af5fff --color=marker:#87ff00,spinner:#af5fff,header:#87afaf'
+
+vdf() {
+    if [ -z "$1" ]; then
+        git diff --name-only | xargs nvim
+    else
+        git diff --name-only "$1" | xargs nvim
+    fi
+}
 
 vrg() {
     if [ -n "$1" ] && [ -n "$2" ]; then
