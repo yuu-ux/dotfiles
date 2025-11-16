@@ -23,7 +23,6 @@ alias work='cd ~/work'
 
 # git
 alias gst='git status'
-alias gdf='git diff'
 alias gdfm='git diff origin/main'
 alias vdfm='git diff origin/main --name-only | xargs nvim'
 alias gad='git add'
@@ -300,3 +299,12 @@ ojt() {
 # if (which zprof > /dev/null) ;then
 #   zprof | cat
 # fi
+
+gdf() {
+    if [ "$1" = "-s" ]; then
+        shift
+        git diff --staged "$@"
+    else
+        git diff
+    fi
+}
