@@ -17,6 +17,10 @@ return {
 					["<Tab>"] = "expand_or_advance",
 					["<S-Tab>"] = "previous",
 				},
+                ns = {
+                    ["<Tab>"] = "next",
+                    ["<S-Tab>"] = "previous",
+                }
 			},
 		})
 
@@ -33,8 +37,8 @@ return {
 			mapping = cmp.mapping.preset.insert({
 				["<S-Tab>"] = cmp.mapping.select_prev_item(),
 				["<Tab>"] = cmp.mapping.select_next_item(),
-				["<C-l>"] = cmp.mapping.complete(),
-				["<C-e>"] = cmp.mapping.abort(),
+				-- ["<C-l>"] = cmp.mapping.complete(),
+				-- ["<C-e>"] = cmp.mapping.abort(),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 			}),
 			experimental = {
