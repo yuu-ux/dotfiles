@@ -14,11 +14,9 @@ alias dcbnc='docker compose build --no-cache'
 
 # cd
 alias tmp='cd /tmp'
-alias dotfiles='cd $HOME/dotfiles'
+alias dot='cd $HOME/dotfiles'
 alias doc='cd ~/Documents'
 alias 42='cd ~/Documents/42'
-alias cweb='cd ~/work/Swebserv'
-alias webs='multipass shell webserv'
 alias work='cd ~/work'
 
 # git
@@ -293,12 +291,14 @@ beep() {
   fi
 }
 
+newac() {
+    acc new "$1" && cd "$1" && \
+    nvim a/a.py b/b.py c/c.py
+}
+
 ojt() {
     oj t -c "python ./$1.py" -d ./tests/
 }
-# if (which zprof > /dev/null) ;then
-#   zprof | cat
-# fi
 
 gdf() {
     if [ "$1" = "-s" ]; then
@@ -307,4 +307,10 @@ gdf() {
     else
         git diff
     fi
+}
+
+chpwd() {
+	if [[ $(pwd) != $HOME ]]; then;
+		ll
+	fi
 }
