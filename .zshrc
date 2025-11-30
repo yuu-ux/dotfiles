@@ -314,3 +314,4 @@ chpwd() {
 		ll
 	fi
 }
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
