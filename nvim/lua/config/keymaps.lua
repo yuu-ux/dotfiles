@@ -54,3 +54,6 @@ keymap.set("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<CR>")
 keymap.set("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>")
 keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+
+-- oil
+keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
