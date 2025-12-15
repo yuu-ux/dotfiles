@@ -10,6 +10,8 @@ mkdir -p "${HOME}/.config"
 CURRENT_DIR=$(cd "$(dirname "$0")" && pwd)
 ln -snf ${CURRENT_DIR}/.zshrc ${HOME}/.zshrc
 ln -snf ${CURRENT_DIR}/.gitconfig ${HOME}/.gitconfig
+ln -snf ${CURRENT_DIR}/glide.ts ${HOME}/.config/glide
+
 for dir in *
 do
     if [ ${dir} = 'tmux' ]; then
