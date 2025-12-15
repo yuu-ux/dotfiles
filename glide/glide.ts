@@ -34,9 +34,8 @@ glide.keymaps.set("normal", "tt", async () => {
   browser.tabs.update({ url, active: true });
 });
 
-glide.keymaps.del("normal", "<S-Esc>")
-glide.keymaps.del("ignore", "<S-Esc>")
-glide.keymaps.set("normal", "<C-g>", "mode_change ignore");
+glide.keymaps.del(["normal", "insert", "visual", "ignore"], "<S-Esc>");
+glide.keymaps.set(["normal", "insert", "visual"], "<C-g>", "mode_change ignore");
 glide.keymaps.set("ignore", "<C-g>", "mode_change normal");
 glide.keymaps.set("normal", "<leader>r", "config_reload");
 glide.keymaps.set("visual", "vv", "mode_change normal");
@@ -46,6 +45,18 @@ glide.keymaps.set("normal", "J", "tab_next");
 glide.keymaps.set("normal", "K", "tab_prev");
 glide.keymaps.set("normal", "H", "back");
 glide.keymaps.set("normal", "L", "forward");
+glide.keymaps.set("insert", "<C-h>", async () => {
+    glide.keys.send('<left>');
+});
+glide.keymaps.set("insert", "<C-l>", async () => {
+    glide.keys.send('<right>');
+});
+glide.keymaps.set("insert", "<C-j>", async () => {
+    glide.keys.send('<down>');
+});
+glide.keymaps.set("insert", "<C-k>", async () => {
+    glide.keys.send('<up>');
+});
 glide.excmds.create(
   { name: "man", arg_count: "+" },
   async (props) => {
