@@ -19,11 +19,16 @@
 
 glide.autocmds.create(
   "UrlEnter",
-  /.*discord\.com.*/,
+  /.*(discord\.com|chatgpt\.com).*/,
   () => {
     glide.excmds.execute("mode_change normal");
   }
 );
+
+glide.keymaps.set("normal", "<C-c>", async () => {
+    const url = "https://chatgpt.com/";
+    browser.tabs.create({url, active: true });
+})
 
 glide.keymaps.set("normal", "tt", async () => {
   const tab = await glide.tabs.active();
@@ -86,3 +91,4 @@ glide.excmds.create(
     await browser.tabs.create({ url, active: true });
   }
 );
+
