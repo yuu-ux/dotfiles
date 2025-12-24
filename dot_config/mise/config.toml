@@ -1,6 +1,7 @@
 [tools]
 bat = 'latest'
 delta = 'latest'
+difftastic = { version = 'latest', exe = 'difft' }
 eza = 'latest'
 neovim = 'latest'
 node = 'latest'

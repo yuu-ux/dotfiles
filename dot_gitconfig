@@ -3,10 +3,10 @@
 	email = yuugaehara@gmail.com
 [core]
 	editor = nvim
-	excludesfile = ~/dotfiles/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	quotepath = false
 [commit]
-	template = ~/dotfiles/.gitmessages
+	template = ~/.gitmessages
 [alias]
 	co = checkout
     st = status
