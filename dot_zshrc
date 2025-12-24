@@ -35,7 +35,7 @@ alias vconf='git diff --name-only --diff-filter=U | xargs nvim'
 # other
 alias v='nvim'
 alias g++='clang++ -std=c++20'
-alias zshr='nvim $HOME/.zshrc && source $HOME/.zshrc'
+alias zshr='chezmoi edit ~/.zshrc --apply'
 alias memo='v memo.md'
 alias ter='terraform'
 alias ll='ls -FalG --color=auto'
