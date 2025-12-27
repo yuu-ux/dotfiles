@@ -1,8 +1,17 @@
 #!/bin/bash
 
+{{ if eq .chezmoi.os "linux" }}
+apt-get update && apt-get install -y zsh make gcc yacc ncurses-dev
+{{ else if eq .chezmoi.os "darwin" }}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && brew install zsh
+{{ end }}
+
 mkdir -p "${HOME}/.zsh"
+
 curl -o "${HOME}/.zsh/git-prompt.sh" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git ~/.local/share/chezmoi/fzf-zsh-plugin
-git clone https://github.com/Aloxaf/fzf-tab ~/.local/share/chezmoi/fzf-tab
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.local/share/chezmoi/.zsh/zsh-autosuggestions
+
+git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git ~/.zsh/fzf-zsh-plugin
+git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/fzf-tab
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 curl https://mise.run | sh
+$HOME/.local/bin/mise install

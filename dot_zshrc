@@ -162,10 +162,10 @@ tm() {
 [[ -e /usr/share/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 [[ -e /lib/terminfo/x/xterm-256color ]] && export TERM=screen-256color
 
-export PATH=~/.local/share/chezmoi/fzf-zsh-plugin/bin:${PATH}
-source ~/.local/share/chezmoi/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
-source ~/.local/share/chezmoi/fzf-tab/fzf-tab.plugin.zsh
-source ~/.local/share/chezmoi/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+export PATH=~/.zsh/fzf-zsh-plugin/bin:${PATH}
+source ~/.zsh/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
+source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
+source ~/.zsh//zsh-autosuggestions/zsh-autosuggestions.zsh
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
