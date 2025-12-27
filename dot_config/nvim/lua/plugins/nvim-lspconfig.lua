@@ -9,7 +9,7 @@ return {
 		-- setting mason
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			ensure_installed = {},
+			ensure_installed = {"clangd", "gopls", "html", "lua_ls", "nginx_language_server", "pyright", "stylua", "terraform", "ts_ls"},
 			automatic_enable = false,
 		})
 
