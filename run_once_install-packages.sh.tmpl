@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#TODO linux が動作することは確認済み、mac で動作することが確認できてないため検証する
 {{ if eq .chezmoi.os "linux" }}
 apt-get update && apt-get install -y zsh make gcc yacc ncurses-dev
 {{ else if eq .chezmoi.os "darwin" }}
