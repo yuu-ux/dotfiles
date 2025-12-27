@@ -6,6 +6,3 @@ require("config/options")
 require("config/keymaps")
 require("config/lazy")
 
-require("nvim-treesitter.configs").setup({
-	ensure_installed = { "c", "lua", "vim", "query", "markdown", "markdown_inline", "go" },
-})
