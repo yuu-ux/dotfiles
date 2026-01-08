@@ -4,7 +4,7 @@
 {{ if eq .chezmoi.os "linux" }}
 apt-get update && apt-get install -y zsh make gcc yacc ncurses-dev
 {{ else if eq .chezmoi.os "darwin" }}
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && brew install zsh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && brew install zsh asmvik/formulae/yabai asmvik/formulae/skhd
 {{ end }}
 
 mkdir -p "${HOME}/.zsh"
