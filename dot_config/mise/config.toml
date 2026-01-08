@@ -3,10 +3,11 @@ bat = 'latest'
 delta = 'latest'
 difftastic = { version = 'latest', exe = 'difft' }
 eza = 'latest'
+gh = "latest"
 ghq = "latest"
 go = "latest"
 neovim = 'latest'
 node = 'latest'
 ripgrep = 'latest'
-tmux = 'latest'
+tmux = '3.4'
 yarn = 'latest'

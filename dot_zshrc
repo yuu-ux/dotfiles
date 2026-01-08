@@ -13,6 +13,7 @@ alias dcd='docker compose down'
 alias dcbnc='docker compose build --no-cache'
 
 # cd
+alias cdrepo='cd $(ghq list -p | fzf)'
 alias tmp='cd /tmp'
 alias dot='chezmoi cd'
 alias doc='cd ~/Documents'
