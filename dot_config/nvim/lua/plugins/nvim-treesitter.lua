@@ -1,8 +1,14 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    opts = {
-        ensure_installed = { "c", "lua", "vim", "query", "markdown", "markdown_inline", "go" },
-        highlight = { enable = true },
-    },
+    branch = "main",
+    config = function ()
+        require("nvim-treesitter").setup()
+
+        vim.api.nvim_create_autocmd("FileType", {
+            group = vim.api.nvim_create_augroup("vim-treesitter-start", {}),
+            callback = function ()
+                pcall(vim.treesitter.start)
+            end
+        })
+    end
 }
