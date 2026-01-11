@@ -187,6 +187,8 @@ zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:down,shift-tab:up
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --no-multi --bind=tab:down,shift-tab:up"
+
 eval "$(~/.local/bin/mise activate zsh)"
 bindkey '^l' autosuggest-accept
 
