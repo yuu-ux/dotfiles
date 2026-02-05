@@ -5,5 +5,5 @@ Provisioned by [chezmoi](https://www.chezmoi.io/)
 # on linux
 apt-get update && apt-get install -y curl git
 
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply yuu-ux
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin" init --apply yuu-ux
 ```
