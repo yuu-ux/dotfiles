@@ -9,6 +9,6 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install dotfiles
         run: sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply -S .
