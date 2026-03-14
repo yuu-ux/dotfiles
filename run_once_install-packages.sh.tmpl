@@ -138,6 +138,10 @@ install_mise_tools() {
     export MISE_GITHUB_TOKEN="${GITHUB_TOKEN}"
   fi
 
+  if [[ -n "${GITHUB_TOKEN:-}" && -z "${GH_TOKEN:-}" ]]; then
+    export GH_TOKEN="${GITHUB_TOKEN}"
+  fi
+
   if ! mise install; then
     if [[ -n "${CI:-}" ]]; then
       return 1
