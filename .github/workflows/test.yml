@@ -3,8 +3,14 @@ on:
   - push
 jobs:
   test:
-    name: test
-    runs-on: macos-latest
+    name: test (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-latest
+          - ubuntu-latest
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     env:
       GITHUB_TOKEN: ${{ github.token }}
