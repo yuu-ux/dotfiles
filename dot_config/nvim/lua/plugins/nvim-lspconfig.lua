@@ -9,7 +9,7 @@ return {
 		-- setting mason
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			ensure_installed = {"clangd", "gopls", "html", "lua_ls", "nginx_language_server", "pyright", "stylua", "terraform", "ts_ls"},
+			ensure_installed = {"clangd", "gopls", "html", "lua_ls", "pyright", "stylua", "ts_ls"},
 			automatic_enable = false,
 		})
 
@@ -37,6 +37,6 @@ return {
 		vim.api.nvim_set_hl(0, "LspReferenceText", { underline = true, fg = "#A00000", bg = "#104040" })
 		vim.api.nvim_set_hl(0, "LspReferenceRead", { underline = true, fg = "#A00000", bg = "#104040" })
 		vim.api.nvim_set_hl(0, "LspReferenceWrite", { underline = true, fg = "#A00000", bg = "#104040" })
-        vim.lsp.enable({ "clangd", "pyright", "ts_ls", "lua_ls", "gopls", "html", "nginx_language_server" })
+        vim.lsp.enable({ "clangd", "pyright", "ts_ls", "lua_ls", "gopls", "html", "kotlin_language_server" })
 	end,
 }

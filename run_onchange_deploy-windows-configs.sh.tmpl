@@ -1,0 +1,17 @@
+#!/bin/bash
+{{ if eq .chezmoi.os "linux" }}
+# Deploy Windows-side config files from WSL
+WINDOWS_USER="yehara"
+WINDOWS_HOME="/mnt/c/Users/${WINDOWS_USER}"
+
+if [ -d "${WINDOWS_HOME}" ]; then
+    # .ideavimrc
+    cp "{{ .chezmoi.sourceDir }}/windows/.ideavimrc" "${WINDOWS_HOME}/.ideavimrc"
+
+    # Windows Terminal settings
+    WT_DIR="${WINDOWS_HOME}/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState"
+    if [ -d "${WT_DIR}" ]; then
+        cp "{{ .chezmoi.sourceDir }}/windows/windows-terminal-settings.json" "${WT_DIR}/settings.json"
+    fi
+fi
+{{ end }}

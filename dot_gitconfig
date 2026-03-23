@@ -5,9 +5,11 @@
 	editor = nvim
 	excludesfile = ~/.gitignore_global
 	quotepath = false
+	autocrlf = input
 [commit]
 	template = ~/.gitmessages
 [alias]
+    wt = worktree
 	co = checkout
     st = status
     ss = stash save
@@ -38,3 +40,9 @@
     external = difft
 [ghq]
     root = ~/work
+[credential "https://github.com"]
+	helper =
+	helper = !/home/yehara/.local/share/mise/installs/gh/2.86.0/gh_2.86.0_linux_amd64/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/home/yehara/.local/share/mise/installs/gh/2.86.0/gh_2.86.0_linux_amd64/bin/gh auth git-credential

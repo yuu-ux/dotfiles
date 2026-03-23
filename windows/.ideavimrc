@@ -1,0 +1,54 @@
+"" leader
+let mapleader = ' '
+
+"" plugin
+set surround
+set commentary
+set ideajoin
+set highlightedyank
+
+"" edit
+nnoremap k gk
+nnoremap j gj
+inoremap jj <ESC>
+inoremap <C-l> <Right>
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+nnoremap [q :action GotoPreviousError<CR>
+nnoremap ]q :action GotoNextError<CR>
+nnoremap <leader>k :action ShowHoverInfo<CR>
+nnoremap <C-r> :action $Redo<CR>
+nnoremap ge :action ShowErrorDescription<CR>
+
+"" build and run
+nnoremap <C-S-r> :action Run<CR>
+nnoremap <C-s> :action Android.SyncProject<CR>
+
+"" fuzzy find
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fg :action FindInPath<CR>
+
+"" window
+nnoremap <C-z>\ :action SplitVertically<CR>
+nnoremap <C-z>- :action SplitHorizontally<CR>
+nnoremap <C-z> :action MaximizeEditorInSplit<CR>
+"" nnoremap <C-z>h <C-w>h
+"" nnoremap <C-z>l <C-w>l
+"" nnoremap <C-z>j <C-w>j
+"" nnoremap <C-z>k <C-w>k
+nnoremap <C-n> gt
+nnoremap <C-p> gT
+nnoremap <leader>w :action CloseContent<CR>
+nnoremap <C-z>l :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>l :action ActivateLogcatToolWindow<CR>
+
+"" option
+set clipboard=unnamed
+nnoremap <Leader>ev :<C-u>vsplit ~/.ideavimrc<CR>
+nnoremap <Leader>sv :<C-u>source ~/.ideavimrc<CR>
+
+"" git
+nnoremap <leader>gs :action Compare.SameVersion<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<CR>
+nnoremap ]c :action VcsShowNextChangeMarker<CR>
