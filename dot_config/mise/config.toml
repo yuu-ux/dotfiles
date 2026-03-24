@@ -11,5 +11,5 @@ neovim = 'latest'
 node = 'latest'
 python = "latest"
 ripgrep = 'latest'
-tmux = '3.4'
+tmux = '3.6a'
 yarn = 'latest'

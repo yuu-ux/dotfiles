@@ -1,18 +1,175 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-#TODO linux が動作することは確認済み、mac で動作することが確認できてないため検証する
+set -euo pipefail
+
+log() {
+  printf '[install] %s\n' "$*"
+}
+
+warn() {
+  printf '[install] warning: %s\n' "$*" >&2
+}
+
+have_cmd() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+can_sudo() {
+  have_cmd sudo && sudo -n true >/dev/null 2>&1
+}
+
+run_as_root() {
+  if [[ "$(id -u)" -eq 0 ]]; then
+    "$@"
+    return
+  fi
+
+  if can_sudo; then
+    sudo "$@"
+    return
+  fi
+
+  warn "skipping privileged command because sudo is unavailable: $*"
+  return 1
+}
+
+install_linux_packages() {
+  if ! have_cmd apt-get; then
+    warn "apt-get is unavailable; skipping Linux package installation"
+    return 0
+  fi
+
+  if ! run_as_root apt-get update; then
+    return 0
+  fi
+
+  if ! run_as_root apt-get install -y zsh make gcc yacc ncurses-dev; then
+    warn "failed to install Linux packages"
+  fi
+}
+
+ensure_homebrew() {
+  export PATH="/opt/homebrew/bin:/usr/local/bin:${PATH}"
+
+  if have_cmd brew; then
+    return 0
+  fi
+
+  if [[ -n "${CI:-}" ]] && ! can_sudo; then
+    warn "Homebrew is missing and cannot be installed without sudo in CI"
+    return 1
+  fi
+
+  log "installing Homebrew"
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
+brew_install_if_needed() {
+  if ! ensure_homebrew; then
+    warn "skipping Homebrew package installation"
+    return 0
+  fi
+
+  export HOMEBREW_NO_AUTO_UPDATE="${HOMEBREW_NO_AUTO_UPDATE:-1}"
+  export NONINTERACTIVE=1
+
+  local formula
+  for formula in "$@"; do
+    if brew list --formula "$formula" >/dev/null 2>&1; then
+      log "brew package already installed: $formula"
+      continue
+    fi
+
+    if ! brew install "$formula"; then
+      if [[ -n "${CI:-}" ]]; then
+        return 1
+      fi
+      warn "failed to install Homebrew package: $formula"
+    fi
+  done
+}
+
+download_if_missing() {
+  local output_path="$1"
+  local url="$2"
+
+  if [[ -f "$output_path" ]]; then
+    log "file already exists: $output_path"
+    return 0
+  fi
+
+  curl -fsSL "$url" -o "$output_path"
+}
+
+clone_repo_if_missing() {
+  local repo_url="$1"
+  local dest_dir="$2"
+
+  if [[ -d "$dest_dir/.git" ]]; then
+    log "repository already exists: $dest_dir"
+    return 0
+  fi
+
+  if [[ -e "$dest_dir" ]]; then
+    warn "path exists but is not a git repository: $dest_dir"
+    return 0
+  fi
+
+  git clone --depth 1 "$repo_url" "$dest_dir"
+}
+
+ensure_mise() {
+  export PATH="${HOME}/.local/bin:${PATH}"
+
+  if have_cmd mise; then
+    return 0
+  fi
+
+  log "installing mise"
+  curl -fsSL https://mise.run | sh
+}
+
+install_mise_tools() {
+  if ! ensure_mise; then
+    return 0
+  fi
+
+  if [[ -n "${GITHUB_TOKEN:-}" && -z "${MISE_GITHUB_TOKEN:-}" ]]; then
+    export MISE_GITHUB_TOKEN="${GITHUB_TOKEN}"
+  fi
+
+  if [[ -n "${GITHUB_TOKEN:-}" && -z "${GH_TOKEN:-}" ]]; then
+    export GH_TOKEN="${GITHUB_TOKEN}"
+  fi
+
+  if ! mise install; then
+    if [[ -n "${CI:-}" ]]; then
+      return 1
+    fi
+    warn "mise install failed; continuing because this is not CI"
+  fi
+}
+
 {{ if eq .chezmoi.os "linux" }}
-apt-get update && apt-get install -y zsh make gcc yacc ncurses-dev
+install_linux_packages
 {{ else if eq .chezmoi.os "darwin" }}
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && brew install zsh asmvik/formulae/yabai asmvik/formulae/skhd
+brew_install_if_needed zsh
+
+if [[ -z "${CI:-}" ]]; then
+  brew_install_if_needed asmvik/formulae/yabai asmvik/formulae/skhd
+else
+  log "skipping yabai/skhd installation in CI"
+fi
 {{ end }}
 
 mkdir -p "${HOME}/.zsh"
 
-curl -o "${HOME}/.zsh/git-prompt.sh" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+download_if_missing \
+  "${HOME}/.zsh/git-prompt.sh" \
+  "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
 
-git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git ~/.zsh/fzf-zsh-plugin
-git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/fzf-tab
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-curl https://mise.run | sh
-$HOME/.local/bin/mise install
+clone_repo_if_missing "https://github.com/unixorn/fzf-zsh-plugin.git" "${HOME}/.zsh/fzf-zsh-plugin"
+clone_repo_if_missing "https://github.com/Aloxaf/fzf-tab.git" "${HOME}/.zsh/fzf-tab"
+clone_repo_if_missing "https://github.com/zsh-users/zsh-autosuggestions.git" "${HOME}/.zsh/zsh-autosuggestions"
+
+install_mise_tools
